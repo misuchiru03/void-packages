@@ -1,0 +1,17 @@
+# Template file for 'fonts-nanum'
+pkgname=fonts-nanum
+version=20180306
+revision=2
+archs=noarch
+font_dirs="/usr/share/fonts/TTF"
+short_desc="Nanum Korean Hangul fonts"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="OFL-1.1"
+homepage="http://naver.com"
+distfiles="http://deb.debian.org/debian/pool/main/f/fonts-nanum/fonts-nanum_20180306.orig.tar.xz"
+checksum=2761e62f3f3f500c7a50d40d5ee8bbd87abe22ab42a78df0496cf80c95fec6f0
+
+do_install() {
+	vmkdir usr/share/fonts/TTF
+	find . -type f -name '*.ttf' -exec install -Dm644 '{}' ${DESTDIR}/usr/share/fonts/TTF \;
+}
