@@ -1,0 +1,14 @@
+# Template file for 'ly'
+pkgname=ly
+version=0.2.1
+revision=1
+archs="i686 x86_64"
+build_style=gnu-makefile
+makedepends="termbox_next-devel"
+depends="pam xauth xinit"
+short_desc="TUI display manager"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="WTFPL"
+homepage="https://github.com/cylgom/ly"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=c13af7749d975ac8a6f663785996ca729441fe7f872fcf0dac828dbe42738c8d
