@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Burp Suite Community
+Exec=/usr/bin/burpsuite-community
+Terminal=false
+Type=Application
+Icon=/usr/share/burpsuite-community/icon.png
+StartupNotify=true
+Categories=Network
