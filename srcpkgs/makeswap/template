@@ -1,0 +1,20 @@
+# Template file for 'makeswap'
+pkgname=makeswap
+version=0.9
+revision=1
+archs="noarch"
+short_desc="Script to check and make swap space"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/misuchiru03/makeswap"
+distfiles="https://github.com/misuchiru03/makeswap/archive/v${version}.tar.gz"
+checksum=69869d5f425814850d2ca26151685ed16303ee066ab4b0d5003f3a4a66a198fb
+
+do_install() {
+	vmkdir usr/bin
+	vbin makeswap
+}
+
+post_install() {
+	vlicense LICENSE
+}
