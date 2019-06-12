@@ -17,7 +17,3 @@ do_install() {
 		vinstall $i 644 usr/share/fonts/TTF
 	done
 }
-
-post_install() {
-	vlicense LICENSE
-}
