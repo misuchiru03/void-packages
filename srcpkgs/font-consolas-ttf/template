@@ -5,10 +5,12 @@ revision=1
 archs="noarch"
 short_desc="Consolas Fonts"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
-license="MIT"
+license="Proprietary"
 homepage="https://github.com/misuchiru03/font-consolas-ttf"
 distfiles="https://github.com/misuchiru03/font-consolas-ttf/archive/${version}.tar.gz"
 checksum=6761e9332670e5c09454d21f318987bed8dcdceb3b655280fe0656dd7f2177a7
+repository=nonfree
+restricted=yes
 
 do_install() {
 	for i in fonts/*.ttf; do
