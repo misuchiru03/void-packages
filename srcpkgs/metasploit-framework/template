@@ -2,19 +2,30 @@
 pkgname=metasploit-framework
 version=5.0.29+20190611142845
 revision=1
-archs="x86_64"
+archs="x86_64 i686"
 short_desc="Security testing framework"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="BSD-3-Clause"
 homepage="https://rapid7.com"
-distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~1rapid7-1_amd64.deb"
-checksum=6da0b7b69c126f6628d4c7f6c3418ee21d518acc03392babf3becedb2c4464fb
+
+if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
+	version=5.0.29+20190611142756
+	_arch="i386"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~1rapid7-1_${_arch}.deb"
+	checksum=f7c29f467b41b8cf3b22fe6d9a4ef3f79d4e1947e5eb9df4bffd716993f42464
+elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
+	version=5.0.29+20190611142845
+	_arch="amd64"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~1rapid7-1_${_arch}.deb"
+	checksum=6da0b7b69c126f6628d4c7f6c3418ee21d518acc03392babf3becedb2c4464fb
+fi
+
 nopie=yes
 nostrip=yes
 noverifyrdeps=yes
 
 do_extract() {
-	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}~1rapid7-1_amd64.deb
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}~1rapid7-1_${_arch}.deb
 	tar xf data.tar.gz
 	rm -f opt/metasploit-framework/bin/msfupdate
 }
