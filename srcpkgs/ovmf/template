@@ -1,0 +1,39 @@
+# Template file for 'ovmf'
+pkgname=ovmf
+version=201905
+revision=1
+_opensslversion=1.1.1c
+wrksrc=edk2-edk2-stable${version}
+hostmakedepends="make python3 libuuid-devel bc acpica-utils nasm"
+makedepends="perl-LWP"
+short_desc="Tianocore UEFI firmware for qemu"
+maintainer="teldra <teldra@rotce.de>"
+license="BSD-2-Clause-Patent, MIT"
+homepage="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2"
+distfiles="https://github.com/tianocore/edk2/archive/edk2-stable${version}.tar.gz
+ https://github.com/openssl/openssl/archive/OpenSSL_${_opensslversion//./_}.tar.gz"
+checksum="31c5a5d1579d4e0f15e56beb134020e4e4692713f26bce3d85683fe38a8ca21d
+ 640f3a3c26aef38293b4ab4017562aa7dccf787267382d27fc003538b405bbb5"
+
+case "$XBPS_TARGET_MACHINE" in
+		i686*) ARCH="IA32"; FILE="Ia32";;
+		*) ARCH="X64"; FILE="X64";;
+esac
+
+pre_configure() {
+	cp -r ${XBPS_BUILDDIR}/openssl-OpenSSL_${_opensslversion//./_}/* ${XBPS_BUILDDIR}/edk2-edk2-stable${version}/CryptoPkg/Library/OpensslLib/openssl
+}
+
+do_build() {
+	export PATH="${wrksrc}/bin:$PATH"
+	make -C BaseTools
+	export EDK_TOOLS_PATH=${wrksrc}/BaseTools
+	. edksetup.sh BaseTools
+	./BaseTools/BinWrappers/PosixLike/build -t GCC5 -a ${ARCH} -p OvmfPkg/OvmfPkg${FILE}.dsc -n ${XBPS_MAKEJOBS} -b RELEASE -D FD_SIZE_2MB
+}
+
+do_install() {
+	vinstall Build/Ovmf${FILE}/RELEASE_GCC5/FV/OVMF_CODE.fd 644 usr/share/ovmf/${FILE}
+	vinstall Build/Ovmf${FILE}/RELEASE_GCC5/FV/OVMF_VARS.fd 644 usr/share/ovmf/${FILE}
+	vlicense OvmfPkg/License.txt
+}
