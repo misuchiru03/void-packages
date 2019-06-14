@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PATH="$PATH:/opt/minecraft/"
+
+minecraft-launcher

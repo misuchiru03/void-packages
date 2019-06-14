@@ -1,0 +1,26 @@
+# Template file for 'minecraft-launcher'
+pkgname=minecraft-launcher
+version=2.1.3676
+revision=1
+archs="noarch"
+depends="openjdk-jre"
+short_desc="Launcher for Minecraft"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="Propriery"
+homepage="https://www.minecraft.net"
+distfiles="https://launcher.mojang.com/download/Minecraft.tar.gz"
+checksum=06e7649f702b782fd606361a18ce133e108cc33a11a800abea0ba5f4caba2fe6
+repository=nonfree
+
+do_extract() {
+	tar zxf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Minecraft.tar.gz
+}
+
+do_install() {
+	vmkdir opt/minecraft
+	vmkdir usr/lib
+	cp -r minecraft-launcher/* ${DESTDIR}/opt/minecraft/
+	cp minecraft-launcher/libcef.so ${DESTDIR}/usr/lib/
+	vbin ${FILESDIR}/minecraft
+	vinstall ${FILESDIR}/minecraft-launcher.desktop 644 usr/share/applications/ minecraft-launcher.desktop
+}
