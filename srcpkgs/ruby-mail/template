@@ -1,5 +1,5 @@
-# Template file for 'mail-ruby'
-pkgname=mail-ruby
+# Template file for 'ruby-mail'
+pkgname=ruby-mail
 version=2.7.1
 revision=1
 archs="noarch"
@@ -9,10 +9,9 @@ makedepends="ruby"
 depends="ruby"
 short_desc="Ruby Mail Library"
 maintainer="Alex Childs <misuchiru03+github@gmail.com>"
-license="GPL-3.0-or-later"
+license="MIT"
 homepage="https://github.com/mikel/mail/"
-distfiles="https://github.com/mikel/mail/archive/${version}.tar.gz"
-checksum=8b0c6220d960d8b435b50e6d4617c39f3b19135c13c1642fd77fe333fd054959
+checksum=ec2a3d489f7510b90d8eaa3f6abaad7038cf1d663cdf8ee66d0214a0bdf99c03
 
 post_install() {
 	vlicense MIT-LICENSE

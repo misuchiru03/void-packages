@@ -1,0 +1,19 @@
+# Template file for 'ruby-mini_mime'
+pkgname=ruby-mini_mime
+version=1.0.1
+revision=1
+wrksrc="mini_mime-${version}"
+archs="noarch"
+build_style=gem
+hostmakedepends=""
+makedepends="ruby"
+depends="ruby"
+short_desc="Minimal mime type library"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/discourse/mini_mime/"
+checksum=a325b0c7a0242720a624f47149181f3873b4f81663cb346ada9f1e3430d497e0
+
+post_install() {
+	vlicense LICENSE.txt
+}

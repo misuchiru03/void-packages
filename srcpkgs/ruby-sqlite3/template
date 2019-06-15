@@ -1,0 +1,19 @@
+# Template file for 'ruby-sqlite3'
+pkgname=ruby-sqlite3
+version=1.4.1
+revision=1
+wrksrc="sqlite3-ruby-${version}"
+archs="noarch"
+build_style=gem
+makedepends="ruby ruby-mini_portile2"
+depends="sqlite ruby"
+short_desc="Ruby bindings for SQLite3 embedded database"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/sparklemotion/sqlite3-ruby/"
+distfiles="https://rubygems.org/downloads/sqlite3-${version}.gem"
+checksum=2491f5af05d6f9456135c1c54547170f07fa2e732d772b4d757168ce961d20ed
+
+post_install() {
+	vlicense LICENSE
+}
