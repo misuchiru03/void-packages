@@ -1,0 +1,18 @@
+# Template file for 'vmail'
+pkgname=vmail
+version=2.9.11
+revision=1
+archs="noarch"
+build_style=gem
+makedepends="sqlite-devel ruby"
+depends="sqlite vim w3m ruby"
+short_desc="Vim interface for Gmail"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="MIT"
+homepage="http://danielchoi.com/software/vmail.html"
+#distfiles="https://github.com/danchoi/vmail/archive/v${version}.tar.gz"
+checksum=b937d4c015e2ee49746c89031fc30bef50784dc6072abde5f4f1dd600a57662c
+
+post_install() {
+	vlicense MIT-LICENSE.txt
+}
