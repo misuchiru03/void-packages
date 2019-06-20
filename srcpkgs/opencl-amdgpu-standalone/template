@@ -1,0 +1,55 @@
+# Template file for 'opencl-amdgpu-standalone'
+pkgname=opencl-amdgpu-standalone
+_major=20.30
+_minor=1109583
+_ubuntuver=20.04
+_libdrmver=2.4.100
+_extractdir="opt/amdgpu-pro/lib/x86_64-linux-gnu"
+version=${_major}.${_minor}
+revision=1
+archs="x86_64"
+wrksrc="amdgpu-pro-${_major}-${_minor}-ubuntu-${_ubuntuver}"
+hostmakedepends="wget tar xz dpkg"
+depends="ocl-icd libdrm"
+short_desc="Proprietary standalone opencl stack for amdgpu"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:AMD-GPU-PRO"
+homepage="https://amd.com"
+distfiles="https://drivers.amd.com/drivers/linux/amdgpu-pro-${_major}-${_minor}-ubuntu-${_ubuntuver}.tar.xz"
+checksum=57f92e29e273ee51893bed57b473a5f781033761ad2a6796cb3e6808a123151f
+restricted="yes"
+
+fetch_cmd='wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx -N'
+
+do_build() {
+	local prefix="amdgpu-pro-"
+	local postfix="-ubuntu-${_ubuntuver}"
+	local major="$_major"
+	local minor="$_minor"
+
+	mkdir "opencl"
+	dpkg -x "opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb" opencl
+	dpkg -x "opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb" opencl
+	sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" opencl/${_extractdir}/libamdocl-orca64.so
+
+	mkdir "libdrm"
+	dpkg -x "libdrm-amdgpu-amdgpu1_2.4.100-${minor}_amd64.deb" libdrm
+	rm "libdrm/${_extractdir/amdgpu-pro/amdgpu}/libdrm_amdgpu.so.1"
+	mv "libdrm/${_extractdir/amdgpu-pro/amdgpu}/libdrm_amdgpu.so.1.0.0" "libdrm/${_extractdir/amdgpu-pro/amdgpu}/libdrm_amdgpo.so.1.0.0"
+	ln -sf "libdrm_amdgpo.so.1.0.0" "libdrm/${_extractdir/amdgpu-pro/amdgpu}/libdrm_amdgpo.so.1"
+}
+
+do_install() {
+	vlicense doc/copyright
+
+	mv "opencl/etc" "${DESTDIR}/"
+	mkdir -p "${DESTDIR}/usr/lib"
+	mv "opencl/${_extractdir}/libamdocl64.so" "${DESTDIR}/usr/lib/"
+	mv "opencl/${_extractdir}/libamdocl-orca64.so" "${DESTDIR}/usr/lib/"
+	mv "opencl/${_extractdir}/libamdocl12cl64.so" "${DESTDIR}/usr/lib/"
+	mv "libdrm/${_extractdir/amdgpu-pro/amdgpu}/libdrm_amdgpo.so.1.0.0" "${DESTDIR}/usr/lib/"
+	mv "libdrm/${_extractdir/amdgpu-pro/amdgpu}/libdrm_amdgpo.so.1" "${DESTDIR}/usr/lib/"
+
+	mkdir -p "${DESTDIR}/opt/amdgpu/share/libdrm"
+	ln -sf /usr/share/libdrm/amdgpu.ids "${DESTDIR}/opt/amdgpu/share/libdrm/amdgpu.ids"
+}
