@@ -1,0 +1,15 @@
+# Template file for 'volatility'
+pkgname=volatility
+version=2.6.1
+revision=1
+archs=noarch
+build_style=python2-module
+pycompile_module=volatility
+hostmakedepends="python-setuptools"
+depends="python-pycryptodome python-distorm3"
+short_desc="Advanced memory forensics framework"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0-only"
+homepage="http://volatilityfoundation.org/"
+distfiles="https://github.com/volatilityfoundation/volatility/archive/${version}.tar.gz"
+checksum=a8dfdbdb2aaa0885387b709b821bb8250e698086fb32015bc2896ea55f359058
