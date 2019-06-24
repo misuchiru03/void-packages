@@ -1,0 +1,28 @@
+# Template file for 'python-distorm3'
+pkgname=python-distorm3
+version=3.4.1
+revision=1
+wrksrc="distorm3-${version}"
+build_style=python-module
+pycompile_module=distorm3
+hostmakedepends="python-setuptools python3-setuptools"
+depends="python"
+short_desc="Powerful disassembler for x86/AMD64"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/gdabah/distorm/"
+distfiles="${PYPI_SITE}/d/distorm3/distorm3-${version}.tar.gz"
+checksum=0ed65741b31cc113f1c98641594fc3e24f0563b6977c5ea2a7d97983095caa0c
+
+post_install() {
+	vlicense COPYING
+}
+
+python3-distorm3_package() {
+	depends="python3"
+	short_desc=${short_desc}
+	pkg_install() {
+		vmove usr/lib/python3*
+		vlicense COPYING
+	}
+}
