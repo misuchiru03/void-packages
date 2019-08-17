@@ -1,0 +1,16 @@
+# Template file for 'logitech-g710-linux-driver'
+pkgname=logitech-g710-linux-driver
+version=ecd2099065b48e7b365ebb30620ee3429eb39287
+revision=1
+build_style=gnu-makefile
+short_desc="Logitech G710+ keyboard drivers"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0"
+homepage="https://github.com/Wattos/logitech-g710-linux-driver"
+distfiles="https://github.com/Wattos/logitech-g710-linux-driver/archive/${version}.tar.gz"
+checksum=3733d4ba95c6d6605f9052a553a3acfa332e14f950d1e1ff4d3d5068850d3ebe
+
+post_install() {
+	vmkdir usr/lib/udev/rules.d
+	vcopy misc/90-logitech-g710-plus.rules usr/lib/udev/rules.d/
+}
