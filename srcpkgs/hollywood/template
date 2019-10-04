@@ -1,0 +1,28 @@
+# Template file for 'hollywood'
+pkgname=hollywood
+_commit=e0a6d7841435421c4f7463a379890084160a6e76
+version=20191004
+revision=1
+wrksrc="hollywood-${_commit}"
+depends="tmux"
+short_desc="Fake hollywood hacker screen in Linux Terminal"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/dustinkirkland/hollywood"
+distfiles="https://github.com/dustinkirkland/hollywood/archive/${_commit}.tar.gz"
+checksum=984242db9db1d523a142826fd530a44a236da5a64d02cdffc70fa4f375ddc5ab
+
+do_install() {
+	vmkdir usr/lib/hollywood
+	vmkdir usr/lib/wallstreet
+	vmkdir usr/share/hollywood
+	vmkdir usr/share/wallstreet
+	vcopy "lib/hollywood/*" usr/lib/hollywood
+	vcopy "lib/wallstreet/*" usr/lib/wallstreet
+	vman share/man/man1/hollywood.1
+	vman share/man/man1/wallstreet.1
+	vcopy "share/hollywood/*" usr/share/hollywood
+	vcopy "share/wallstreet/*" usr/share/wallstreet
+	vbin bin/hollywood
+	vbin bin/wallstreet
+}
