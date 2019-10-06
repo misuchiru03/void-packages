@@ -1,0 +1,13 @@
+# Template file for 'rekall'
+pkgname=rekall
+version=1.7.1
+revision=1
+build_style=python3-module
+pycompile_module="rekall"
+hostmakedepends="python3-setuptools"
+short_desc="Memory Forensic Framework"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0"
+homepage="http://www.rekall-forensic.com/"
+distfiles="https://github.com/google/rekall/archive/v${version}.tar.gz"
+checksum=097f9ed38a0bbd36faf31ec5b11c780e9c0d9e9bfcd11ba9711e033067dbfab8
