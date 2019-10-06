@@ -1,6 +1,7 @@
 # Template file for 'metasploit-framework'
 pkgname=metasploit-framework
-version=5.0.49+20190917
+_date=20191004
+version=5.0.53
 revision=1
 archs="x86_64 i686 aarch64 armv7l armv7hf"
 short_desc="Security testing framework"
@@ -9,29 +10,29 @@ license="BSD-3-Clause"
 homepage="https://rapid7.com"
 
 if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
-	version=5.0.49+20190917
-	_timestamp=102457
+	version=5.0.53
+	_timestamp=20191004102438
 	_arch="i386"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=c2432521d5a110b36482e81ca406c79aabf11cfccf9ba99eb6440f86dfdeb697
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=3d342477694626e571016659b3c1ade8b2491c40979671fde026508bf28d85ec
 elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
-	version=5.0.49+20190917
-	_timestamp=102427
+	version=5.0.53
+	_timestamp=20191004102514
 	_arch="amd64"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=3fe877ad97d7df56d29d5aea51931ad7909f9ac938879741071d982263ffc94e
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=7e502c4d44c56d1e55f3bb95e933afea6112c71523d65e1d41c7a60ffcd6201a
 elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
-	version=5.0.48+20190916
-	_timestamp=093332
+	version=5.0.53
+	_timestamp=20191004093319
 	_arch="arm64"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=dcae839322c9d9acd98b8db021014ed6b0608ba27d8de31ce9b2155370e46a1a
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=fdae46d556e62d8d0b6a217eb704b56e67c9124a46954199e46241f7641d13aa
 elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ] || [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
-	version=5.0.48+20190916
-	_timestamp=093329
+	version=5.0.53
+	_timestamp=20191004093404
 	_arch="armhf"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=f526ed1a84c012d1abc93887486bdf3376fbe9b53f9124491ad70792b51740a1
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=c7038d61646f52f5ad6aab472228ac227d52f35f6eefabc0f235ae4583e9a73b
 fi
 
 nopie=yes
@@ -39,7 +40,7 @@ nostrip=yes
 noverifyrdeps=yes
 
 do_extract() {
-	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}${_timestamp}~1rapid7-1_${_arch}.deb
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}+${_timestamp}~1rapid7-1_${_arch}.deb
 	tar xf data.tar.gz
 	rm -f opt/metasploit-framework/bin/msfupdate
 }
