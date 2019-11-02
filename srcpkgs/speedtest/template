@@ -1,0 +1,48 @@
+# Template file for 'speedtest'
+pkgname=speedtest
+version=1.0.0
+revision=1
+archs="i686 x86_64 armv6l aarch64 armv7l armv7hf"
+create_wrksrc=yes
+hostmakedepends="wget tar"
+short_desc="Official Ookla speedtest command line client"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="custom:proprietary"
+homepage="https://www.speedtest.net/"
+conflicts="speedtest-cli>=0"
+
+_filename="speedtest-${version}.tar.gz"
+
+if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
+	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-i386-linux.tgz"
+	checksum=828362e559e53d80b3579df032fe756a0993cf33934416fa72e9d69c8025321b
+elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
+	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-x86_64-linux.tgz"
+	checksum=5fe2028f0d4427e4f4231d9f9cf70e6691bb890a70636d75232fe4d970633168
+elif [ "$XBPS_TARGET_MACHINE" == "armv6l" ]; then
+	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-arm-linux.tgz"
+	checksum=0fa7b3237d0fe4fa15bc1e7cb27ccac63b02a2679b71c2879d59dd75d3c9235d
+elif [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
+	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-armhf-linux.tgz"
+	checksum=04b54991cfb9492ea8b2a3500340e7eeb78065a00ad25a032be7763f1415decb
+elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ]; then
+	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-armhf-linux.tgz"
+	checksum=04b54991cfb9492ea8b2a3500340e7eeb78065a00ad25a032be7763f1415decb
+elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
+	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-aarch64-linux.tgz"
+	checksum=073684dc3490508ca01b04c5855e04cfd797fed33f6ea6a6edc26dfbc6f6aa9e
+fi
+
+do_fetch() {
+	wget ${distfiles} -O ${_filename}
+}
+
+do_extract() {
+	tar zxf ../${_filename}
+}
+
+do_install() {
+	vbin speedtest
+	vman speedtest.5
+	vlicense ${FILESDIR}/LICENSE
+}
