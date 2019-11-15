@@ -1,0 +1,14 @@
+# Template file for 'font-awesome5-pro'
+pkgname=font-awesome5-pro
+version=5.11.2
+revision=1
+short_desc="Font Awesome 5 Pro fontpack"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="OFL-1.1"
+homepage="https://fontawesome.com"
+distfiles="https://github.com/misuchiru03/font-awesome5-pro/archive/v${version}.tar.gz"
+checksum=9dae246734933edef46213183f671293ed5ddce54b31e9304ef57ad9ef18363a
+
+do_install() {
+	install -Dm644 *.otf -t ${DESTDIR}/usr/share/fonts/OTF
+}
