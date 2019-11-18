@@ -4,31 +4,35 @@ version=2.1.04
 revision=1
 archs="noarch"
 create_wrksrc=yes
-build_style=fetch
-hostmakedepends="unzip"
+hostmakedepends="wget unzip"
+makedepends="unzip"
 depends="virtual?java-runtime"
 short_desc="Web application security testing tool"
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="proprietary"
 homepage="https://www.portswigger.net"
-_fname="download?product=community&version=${version}&type=jar"
-distfiles="https://portswigger.net/burp/releases/${_fname}"
 checksum=795ce10638fb289144c6882ef10c5c1007ed6b428b41667455267b3aefa2f8eb
 restricted=yes
 
+_fname="download?product=community&version=${version}&type=jar"
 _jarname="burpsuite-community.jar"
+_distfiles="https://portswigger.net/burp/releases/${_fname}"
 _iconame="resources/Media/icon64.png"
 
-do_build() {
-	mv "$_fname" "$_jarname"
-        unzip $_jarname resources/Media/icon64.png
+do_fetch() {
+	$XBPS_FETCH_CMD -o $_jarname $_distfiles
+}
+
+pre_install() {
+	mv ../$_jarname .
+	unzip $_jarname $_iconame
 }
 
 do_install() {
-        vbin ${FILESDIR}/burpsuite-community
-        vmkdir usr/share/burpsuite-community
-        vinstall burpsuite-community.jar 644 usr/share/burpsuite-community
-        vinstall resources/Media/icon64.png 644 usr/share/burpsuite-community icon.png
-        vmkdir usr/share/applications
-        vinstall ${FILESDIR}/burpsuite-community.desktop 644 usr/share/applications
+	vbin ${FILESDIR}/burpsuite-community
+	vmkdir usr/share/burpsuite-community
+	vinstall $_jarname 644 usr/share/burpsuite-community
+	vinstall $_iconame 644 usr/share/burpsuite-community icon.png
+	vmkdir usr/share/applications
+	vinstall ${FILESDIR}/burpsuite-community.desktop 644 usr/share/applications
 }
