@@ -1,0 +1,21 @@
+# Template file for 'ms-core-fonts'
+pkgname=ms-core-fonts
+version=1.0
+revision=1
+archs="noarch"
+hostmakedepends="font-util"
+short_desc="Microsoft Core Fonts pack"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="proprietary"
+homepage="https://www.fonts.com/font/monotype"
+distfiles="https://github.com/misuchiru03/ms-core-fonts/archive/v${version}.tar.gz"
+checksum=5e6366a573b54c43ece51568682f2ad8ba298d65d9cdca534b243996771c0d99
+repository=nonfree
+restricted=yes
+
+do_install() {
+	for font in *.{ttf,TTF}; do
+		vinstall "$font" 644 /usr/share/fonts/TTF/
+	done
+	vlicense LICENSE
+}
