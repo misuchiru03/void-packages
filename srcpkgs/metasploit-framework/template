@@ -1,0 +1,57 @@
+# Template file for 'metasploit-framework'
+pkgname=metasploit-framework
+_date=20191118
+version=5.0.61
+revision=1
+archs="x86_64 i686 aarch64 armv7l armv7hf"
+short_desc="Security testing framework"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://rapid7.com"
+
+if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
+	version=5.0.61
+	_timestamp=20191118112614
+	_arch="i386"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=01875c674d010f4343866a1c4b96d9696ad238cb81bb6ac9fad680f5fc16b985
+elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
+	version=5.0.61
+	_timestamp=20191118112623
+	_arch="amd64"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=eca9871fa843b61b0ff51310461493cf40f9086b565b9b7bcb1b444541a6fdb9
+elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
+	version=5.0.61
+	_timestamp=20191117103320
+	_arch="arm64"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=44b90e9b83f096dc0dcf4a2a298c0c7a95eb32fe8083cb65b78bf3292d6ccad1
+elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ] || [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
+	version=5.0.61
+	_timestamp=20191117103325
+	_arch="armhf"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=ebf65cd95023bb68fe1296b5d189f5716483da290cf3f7b766c60cab9a7994f9
+fi
+
+nopie=yes
+nostrip=yes
+noverifyrdeps=yes
+
+do_extract() {
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}+${_timestamp}~1rapid7-1_${_arch}.deb
+	tar xf data.tar.gz
+	rm -f opt/metasploit-framework/bin/msfupdate
+}
+
+do_install() {
+	cp -r opt ${DESTDIR}
+	for i in opt/metasploit-framework/bin/*; do
+		vbin ${i}
+	done
+}
+
+post_install() {
+	vlicense opt/metasploit-framework/LICENSE
+}
