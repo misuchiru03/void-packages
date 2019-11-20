@@ -1,0 +1,21 @@
+# Template file for 'font-times-new-roman'
+pkgname=font-times-new-roman
+version=1.0
+revision=1
+archs="noarch"
+depends="font-util"
+short_desc="Times New Roman font pack"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="proprietary"
+homepage="https://www.fonts.com/font/monotype/times-new-roman"
+distfiles="https://github.com/misuchiru03/font-times-new-roman/archive/v${version}.tar.gz"
+checksum=8413acf594d75044d203c166af8afb85e6ea8af348ab16f7878e421d7f8f4993
+repository=nonfree
+restricted=yes
+
+do_install() {
+	for font in *.ttf; do
+		vinstall "$font" 644 /usr/share/fonts/TTF/
+	done
+	vlicense LICENSE
+}
