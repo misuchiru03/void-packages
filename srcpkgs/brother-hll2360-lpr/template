@@ -1,0 +1,28 @@
+# Template file for 'brother-hll2360-lpr'
+pkgname=brother-hll2360-lpr
+version=3.2.0
+revision=1
+archs="i686 x86_64"
+create_wrksrc=yes
+depends="a2ps ghostscript"
+short_desc="LPR driver for the brother HL-L2360D printer"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0"
+homepage="https://support.brother.com/g/b/index.aspx"
+distfiles="https://download.brother.com/welcome/dlf101916/hll2360dlpr-${version}-1.i386.deb"
+checksum=a468b1d53114b1f6580d41ed2aa4b1be72dad4eadce4f017d37a4e36a9ecaf38
+mutable_files="/opt/brother/Printers/HLL2360D/inf/brHLL2360Drc"
+nopie=yes
+
+if [ "$XBPS_TARGET_MACHINE" = "x86_64" ]; then
+	depends+=" glibc-32bit"
+fi
+
+do_extract() {
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/hll2360dlpr-${version}-1.i386.deb
+}
+
+do_install() {
+	mkdir -p ${DESTDIR}
+	tar xvpfz data.tar.gz -C ${DESTDIR}
+}

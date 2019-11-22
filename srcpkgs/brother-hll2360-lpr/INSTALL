@@ -1,0 +1,6 @@
+case "${ACTION}" in
+	post)
+		mkdir -p var/spool/lpd
+		opt/brother/Printers/HLL2360D/inf/setupPrintcapij HLL2360D -i
+	;;
+esac
