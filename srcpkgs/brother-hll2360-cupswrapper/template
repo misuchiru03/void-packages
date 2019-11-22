@@ -1,0 +1,25 @@
+# Template file for 'brother-hll2360-cupswrapper'
+pkgname=brother-hll2360-cupswrapper
+version=3.2.0
+revision=1
+archs="i686 x86_64"
+create_wrksrc=yes
+depends="brother-hll2360-lpr cups"
+short_desc="CUPS wrapper driver for the brother HL-L2360 printer"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0"
+homepage="https://support.brother.com/g/b/index.aspx"
+distfiles="https://download.brother.com/welcome/dlf101917/hll2360dcupswrapper-${version}-1.i386.deb"
+checksum=a9eeae8d71fc32d209833d4b1bc8ecf4d530ab7b46301d510018f18554191fd0
+nopie=yes
+
+do_extract() {
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/hll2360dcupswrapper-${version}-1.i386.deb
+}
+
+do_install() {
+	mkdir -p ${DESTDIR}
+	tar zxpfv data.tar.gz -C ${DESTDIR}
+	vinstall ${FILESDIR}/cupswrapper.void 755 /opt/brother/Printers/hll2360d/cupswrapper
+	vinstall ${FILESDIR}/43-cups-usb.rules 644 /usr/lib/udev/rules.d/
+}

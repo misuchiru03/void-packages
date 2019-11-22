@@ -1,0 +1,3 @@
+case "${ACTION}" in
+	pre) opt/brother/Printers/HLL2360D/cupswrapper/cupswrapper.void -e ;;
+esac
