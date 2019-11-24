@@ -1,0 +1,27 @@
+# Template file for 'netgear-a6210'
+pkgname=netgear-a6210
+version=m.7
+_version=m-7
+_commit=034ff0c9e8d13e8ee7b1e0203339c0c469e6b67e
+wrksrc="Netgear-A6210-${_commit}"
+revision=1
+archs="i686 x86_64"
+build_style=gnu-makefile
+makedepends="linux-headers kmod"
+short_desc="Netgear AC1200 High Gain WiFi USB Adapter kernel driver"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://netgear.com"
+distfiles="https://github.com/kaduke/Netgear-A6210/archive/${_commit}.tar.gz"
+checksum=79967435e360069c77149724c89e31200d82bdcefa62e727161378c17e0f4731
+nocross=yes
+nostrip=yes
+
+pre_build() {
+	vmkdir ../../lib/modules/$(uname -r)/build
+#	vmkdir etc/Wireless/RT2870STA/
+}
+
+#pre_install() {
+#	vcopy RT2870STA.dat etc/Wireless/RT2870STA/
+#}	
