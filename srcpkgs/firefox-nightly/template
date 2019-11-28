@@ -1,0 +1,44 @@
+# Template file for 'firefox-nightly'
+pkgname=firefox-nightly
+version=72.0a1
+revision=1
+archs="i686 x86_64"
+build_style=fetch
+hostmakedepends="bzip2"
+depends="libvpx5 libevent"
+short_desc="Mozilla Firefox nightly build"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MPL-2.0, GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="https://www.mozilla.org/firefox"
+_filename="firefox-${version}.en-US.linux-${XBPS_TARGET_MACHINE}.tar.bz2"
+nopie=yes
+
+if [ ${XBPS_TARGET_MACHINE} == "x86_64" ]; then
+	distfiles="${MOZILLA_SITE}/firefox/nightly/latest-mozilla-central/firefox-${version}.en-US.linux-x86_64.tar.bz2"
+	checksum=d7575abdda882bd2636da7646259168f5adfb667eb42df3a29416ac1ebc1fcad
+elif [ ${XBPS_TARGET_MACHINE} == "i686" ]; then
+	distfiles="${MOZILLA_SITE}/firefox/nightly/latest-mozilla-central/firefox-${version}.en-US.linux-i686.tar.bz2"
+	checksum=7411edb087140f31b2ae0804d4ddbff05c05e2bdbf37e0c3a187f37d9dadc0ae
+fi
+
+do_fetch() {
+	${XBPS_FETCH_CMD} ${distfiles}
+}
+
+do_extract() {
+	tar xjf ../${_filename}
+	mv firefox{,-nightly}
+	mv firefox-nightly/firefox-bin firefox-nightly/firefox-nightly-bin
+}
+
+do_install() {
+	vmkdir usr/lib/firefox-nightly
+	cp -r firefox-nightly ${DESTDIR}/usr/lib/
+
+	cd firefox-nightly
+#	ln -sf firefox-nightly-bin firefox-nightly
+	vmkdir usr/bin
+	ln -sf /usr/lib/firefox-nightly/firefox-nightly-bin ${DESTDIR}/usr/bin/firefox-nightly
+	vinstall fonts/TwemojiMozilla.ttf 644 usr/share/fonts/TTF/
+	vinstall ${FILESDIR}/firefox-nightly.desktop 644 usr/share/applications/
+}
