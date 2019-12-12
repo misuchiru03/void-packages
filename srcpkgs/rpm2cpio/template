@@ -1,0 +1,20 @@
+# Template file for 'rpm2cpio'
+pkgname=rpm2cpio
+version=2017
+revision=1
+#build_style=gnu-makefile
+depends="python3"
+short_desc="Lightweight implementatino of rpm2cpio"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://ruda.github.io/rpm2cpio"
+distfiles="https://github.com/ruda/rpm2cpio/archive/${version}.tar.gz"
+checksum=d266a4f49e65b5d05956502549ceb1d5671f927375ff71299069e6d92363297a
+
+do_install() {
+	vbin rpm2cpio.py rpm2cpio
+
+	vman rpm2cpio.1
+	vdoc README
+	vlicense LICENSE
+}

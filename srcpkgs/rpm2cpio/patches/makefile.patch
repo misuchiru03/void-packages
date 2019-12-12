@@ -1,0 +1,7 @@
+--- Makefile
++++ Makefile
+@@ -1,4 +1,4 @@
+-PREFIX=$(DESTDIR)/usr/local
++PREFIX=$(DESTDIR)/usr
+ BINDIR=$(PREFIX)/bin
+ MANDIR=$(PREFIX)/share/man
