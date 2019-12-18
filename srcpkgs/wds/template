@@ -1,0 +1,22 @@
+# Template file for 'wds'
+pkgname=wds
+version=1.1.0
+revision=1
+archs="i686 x86_64"
+build_style=gnu-makefile
+makedepends="cmake bison flex pkg-config glib-devel gstreamer1-devel"
+depends="wpa_supplicant connman"
+short_desc="Wireless display software for Linux"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="LGPL-2.1"
+homepage="https://01.org/wds"
+distfiles="https://github.com/intel/wds/archive/v${version}.tar.gz"
+checksum=6c3f11f1ce130d388047b456647b229c452cce72c6e13a4f2288f1f89d51250f
+
+do_configure() {
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+}
+
+post_install() {
+	mv ${DESTDIR}/usr/lib64/* ${DESTDIR}/usr/lib/
+}
