@@ -1,0 +1,19 @@
+# Template file for 'python3-matrix'
+pkgname=python3-matrix
+version=2.0
+revision=1
+wrksrc="terminal_matrix-${version}"
+short_desc="Python script to emulate \"The Matrix\" screensaver in terminal"
+depends="font-util"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/jsbueno/terminal_matrix/"
+distfiles="https://github.com/jsbueno/terminal_matrix/archive/${version}.tar.gz"
+checksum=56250bf65b568b0d6ce39de72010aabd04b8cca466cd8810c4c055c5c26fedbe
+
+do_install() {
+	vbin matrix.py
+
+	vmkdir usr/share/fonts/TTF
+	install -m644 ${FILESDIR}/*.ttf ${DESTDIR}/usr/share/fonts/TTF
+}
