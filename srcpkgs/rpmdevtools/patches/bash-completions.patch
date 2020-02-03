@@ -1,0 +1,11 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -15,7 +15,7 @@
+ fi
+ 
+ PKG_CHECK_VAR([bashcompdir], [bash-completion], [completionsdir],
+-    [HAVE_BASHCOMP2=1], [bashcompdir="${sysconfdir}/bash_completion.d"])
++    [HAVE_BASHCOMP2=1], [bashcompdir="/usr/share/bash-completion/completions"])
+ AM_CONDITIONAL([HAVE_BASHCOMP2], [test "$HAVE_BASHCOMP2" = 1])
+ AC_SUBST(bashcompdir)
+ 

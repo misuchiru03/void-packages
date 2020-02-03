@@ -1,0 +1,19 @@
+# Template file for 'rpmdevtools'
+pkgname=rpmdevtools
+version=8.10
+revision=1
+_version=${version//./_}
+wrksrc="rpmdevtools-RPMDEVTOOLS_${_version}"
+build_style="gnu-configure"
+makedepends="python3 rpm-python3 pkg-config automake perl rpm help2man"
+depends="python3 rpm-python3 perl gcc"
+short_desc="RPM Development Tools for building RPM packages"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0"
+homepage="https://pagure.io/rpmdevtools/archive/RPMDEVTOOLS_8_10"
+distfiles="${homepage}/rpmdevtools-RPMDEVTOOLS_${_version}.tar.gz"
+checksum=61df519e39ce4b901d1cff11d42980fedcebae87aa0ba6c8e015ea0462ea5418
+
+pre_configure() {
+	autoreconf --install
+}
