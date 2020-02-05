@@ -1,6 +1,6 @@
 # Template file for 'burpsuite-community'
 pkgname=burpsuite-community
-version=2.1.07
+version=2020.1
 revision=1
 archs="noarch"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ short_desc="Web application security testing tool"
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="proprietary"
 homepage="https://www.portswigger.net"
-checksum=23ce776dcc1dcf3d3bf332180d112fd1a68345747e2ffc282a2d515efbbc2120
+checksum=
 restricted=yes
 
 _fname="download?product=community&version=${version}&type=jar"
