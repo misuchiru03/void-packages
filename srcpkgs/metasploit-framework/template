@@ -1,7 +1,7 @@
 # Template file for 'metasploit-framework'
 pkgname=metasploit-framework
-_date=20191122
-version=5.0.62
+_date=20200205
+version=5.0.73
 revision=1
 archs="x86_64 i686 aarch64 armv7l armv7hf"
 short_desc="Security testing framework"
@@ -10,29 +10,29 @@ license="BSD-3-Clause"
 homepage="https://rapid7.com"
 
 if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
-	version=5.0.62
-	_timestamp=20191122112645
+	version=5.0.73
+	_timestamp=20200205112617
 	_arch="i386"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=bdeeef4198475214fedfbe54838755c4d310b4d9e838eaa6b7687fdf267449d1
+	checksum=2cfaa94be51109e48bc3671d96f0539c28aa08f2264b157f21016cb78eed6ef1
 elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
-	version=5.0.62
-	_timestamp=20191122112656
+	version=5.0.73
+	_timestamp=20200205112602
 	_arch="amd64"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=ad038ea689ac74743f8682ef9ddeab5af29dbb34c306e7e86a4ada480a93875c
+	checksum=bd7a13ad7232e6c59b87fd35a1787e9966c4f204c9271e4216c8010ab4d72a19
 elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
-	version=5.0.61
-	_timestamp=20191120103318
+	version=5.0.73
+	_timestamp=20200204103424
 	_arch="arm64"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=38df7bb3d2b49e4a830cd537a1b6057827e994935859d6e54d9f1a801e726ee3
+	checksum=961d339077777f5a10959a4ae34275d8d46e56fac6337f5117d4248e00cf7774
 elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ] || [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
-	version=5.0.61
-	_timestamp=20191121103734
+	version=5.0.73
+	_timestamp=20200204103338
 	_arch="armhf"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=06a2ec503d8a9893ce75a3a4c734543325b166b7f69b9e89b62d2eb43bb807df
+	checksum=d4d1b16cdbc44f2bec7cd2f9e11ab94fedfdc193bff2f4ad5ace153d15eb9ab6
 fi
 
 nopie=yes
