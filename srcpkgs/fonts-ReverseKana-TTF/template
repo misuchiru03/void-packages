@@ -1,0 +1,20 @@
+# Template file for 'fonts-ReverseKana-TTF'
+pkgname=fonts-ReverseKana-TTF
+version=1.0
+revision=1
+depends="font-util"
+short_desc="Reversed Katakana font for use with the Matrix applications"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="Proprietary"
+homepage="https://github.com/misuchiru03/fonts-ReverseKana-TTF"
+distfiles="https://github.com/misuchiru03/fonts-ReverseKana-TTF/archive/${version}.tar.gz"
+checksum=8cc237d35f08ffbc39313a73f8422433598e22d29833a554ae98b6c5aab8ee38
+repository=nonfree
+
+do_install() {
+	vmkdir usr/share/fonts/TTF
+	install -m644 ReverseKana.ttf ${DESTDIR}/usr/share/fonts/TTF
+
+	vmkdir usr/share/fonts/OTF
+	install -m644 ReverseKana.otf ${DESTDIR}/usr/share/fonts/OTF
+}
