@@ -1,0 +1,18 @@
+# Template file for 'nmail'
+pkgname=nmail
+version=1.11
+revision=1
+build_style=cmake
+hostmakedepends="help2man"
+makedepends="libetpan-devel ncurses-devel"
+depends="lynx"
+short_desc="Console-based email client for Linux and macOS"
+maintainer="Nathan Owens <ndowens04@gmail.com>"
+license="MIT"
+homepage="https://github.com/d99kris/nmail"
+distfiles="https://github.com/d99kris/nmail/archive/v${version}.tar.gz"
+checksum=3f71b554e7a9ed111a2a258d18d169fe5e62afb69d97e4658435e7e17bc12a55
+
+post_install() {
+	vlicense LICENSE
+} 

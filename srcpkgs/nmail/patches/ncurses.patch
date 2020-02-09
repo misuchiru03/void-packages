@@ -1,0 +1,65 @@
+--- src/ui.h
++++ src/ui.h
+@@ -11,7 +11,7 @@
+ #include <string>
+ #include <vector>
+
+-#include <ncursesw/ncurses.h>
++#include <curses.h>
+
+ #include "config.h"
+ #include "imapmanager.h"
+--- src/util.h.orig
++++ src/util.h
+@@ -9,6 +9,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <curses.h>
+ 
+ #ifdef __APPLE__
+ #define KEY_SYS_BACKSPACE 127
+--- src/util.cpp.orig
++++ src/util.cpp
+@@ -18,7 +18,7 @@
+ #include <termios.h>
+ 
+ #include <libetpan/libetpan.h>
+-#include <ncursesw/ncurses.h>
++#include <curses.h>
+ #include <openssl/sha.h>
+ 
+ #include "apathy/path.hpp"
+--- src/ui.cpp.orig
++++ src/ui.cpp
+@@ -6,6 +6,7 @@
+ // nmail is distributed under the MIT license, see LICENSE for details.
+ 
+ #include "ui.h"
++#include <curses.h>
+ 
+ #include <algorithm>
+ #include <climits>
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -81,8 +81,7 @@
+ set_target_properties(nmail PROPERTIES COMPILE_FLAGS
+                       "-Wall -Wextra -Wpedantic -Wshadow -Wpointer-arith \
+                        -Wcast-qual -Wno-missing-braces -Wswitch-default -Wunreachable-code \
+-                       -Wundef -Wuninitialized -Wcast-align \
+-                       -Wno-gnu-zero-variadic-macro-arguments")
++                       -Wundef -Wuninitialized -Wcast-align")
+ target_compile_definitions(nmail PRIVATE PROJECT_VERSION="${PROJECT_VERSION}" LIBETPAN_IOS_DISABLE_SSL=0 WIN32=0)
+ 
+ # Dependency ncurses
+--- src/lockfile.h.orig
++++ src/lockfile.h
+@@ -8,6 +8,8 @@
+ #pragma once
+ 
+ #include <string>
++#include <sys/stat.h>
++#include <fcntl.h>
+ 
+ class DirLock
+ {
