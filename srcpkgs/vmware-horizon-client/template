@@ -1,0 +1,84 @@
+# Template file for 'vmware-horizon-client'
+pkgname=vmware-horizon-client
+version=5.3.0
+_build=15208949
+_cart=CART20FQ4
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="wget"
+makedepends="libxslt patchelf"
+short_desc="VMware Horizon Client connect to VMware Horizon virtual desktop"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="Proprietary"
+homepage="https://my.vmware.com"
+_url="https://download3.vmware.com/software/view/viewclients/${_cart}"
+distfiles="${_url}/VMware-Horizon-Client-${version}-${_build}.x64.bundle"
+checksum=4f2a8d5f420d467233c28f59fd9c20f2e39abcac4983d9248d5c1515c53d3253
+_packages="vmware-horizon-client vmware-horizon-html5mmr
+ vmware-horizon-integrated-printing vmware-horizon-media-provider
+ vmware-horizon-mmr vmware-horizon-pcoip vmware-horizon-rtav
+ vmware-horizon-scannerclient vmware-horizon-seamless-window
+ vmware-horizon-serialportclient vmware-horizon-smartcard vmware-horizon-tsdr
+ vmware-horizon-usb vmware-horizon-virtual-printing vmware-installer"
+_bundle="VMware-Horizon-Client-${version}-${_build}.x64.bundle"
+restricted=yes
+repository=nonfree
+
+do_fetch() {
+	${XBPS_FETCH_CMD} ${distfiles} 
+	${XBPS_FETCH_CMD} https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass
+}
+
+ebegin() {
+	echo -n "Begin ${1}: "
+}
+eend() {
+	echo 'done'
+}
+
+do_extract() {
+	export T="${XBPS_BUILDDIR}"
+	source "${XBPS_BUILDDIR}/vmware-bundle.eclass"
+
+	for bundle in "${_packages}"; do
+		vmware-bundle_extract-bundle-component "${XBPS_BUILDDIR}/${_bundle}" "${bundle}" "${XBPS_BUILDDIR}/extract/${XBPS_BUILDDIR}"
+	done
+}
+
+#do_extract() {
+#	cd ..
+#	ls ${_bundle}
+#	/bin/bash ${_bundle} --extract ${wrksrc}/extract
+#}
+
+do_build() {
+	for bundle in "${_packages}"; do
+		for FILE in $(find ${bundle} -type f); do
+			file --mime ${FILE} |\
+			egrep -q "(application/x-(pie-)?(executable|sharedlib)|text/x-shellscript)"\
+			|| continue
+			chmod +x "${FILE}"
+			ls "${FILE}"
+		done
+	done
+
+	for lib in "${wrksrc}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib*.so*; do
+		patchelf --remove-rpath "${lib}"
+	done
+
+	rm -rf "${wrksrc}"/extract/vmware-horizon-pcoip/lib/vmware/xkeymap/
+
+	sed -i -e '/Name=/a Comment="Connect to VMware Horizon View virtual machines' -e '/Icon=/s/.png$//' \
+		"${wrksrc}"/extract/vmware-horizon-client/share/applications/vmware-view.desktop
+}
+
+do_install() {
+	# vmware-horizon-client
+	cd "${wrksrc}/extract/vmware-horizon-client/"
+	vbin "bin/*"
+	vmkdir usr/lib
+	vcopy lib "${DESTDIR}/usr/lib"
+	vmkdir usr/share
+	vcopy share "${DESTDIR}/usr/share"
+}
