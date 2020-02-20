@@ -1,0 +1,34 @@
+# Template file for 'Shift'
+pkgname=Shift
+version=4.0.13
+revision=1
+archs="i686 x86_64"
+wrksrc="shift-linux-v${version}"
+hostmakedepends="unzip"
+short_desc="Desktop app for streamlining your accounts, apps, and workflows"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://tryshift.com"
+distfiles="https://update.tryshift.com/download/version/${version}/linux_32.zip"
+checksum=f5b277fc25242a59e493708586c9d6fa658b49c0c7dbbb1354df15ca54be8a05
+_extractdir="shift-linux-v${version}"
+skiprdeps="/opt/shift-linux/libEGL.so /opt/shift-linux/libGLESv2.so
+ /opt/shift-linux/swiftshader/libEGL.so /opt/shift-linux/swiftshader/libGLESv2.so"
+
+do_fetch() {
+	${XBPS_FETCH_CMD} ${distfiles}
+}
+
+do_extract() {
+	unzip ../linux_32.zip
+}
+
+do_install() {
+	vmkdir opt
+	vcopy ${_extractdir} opt/shift-linux
+
+	vmkdir usr/bin
+	vcopy ${FILESDIR}/Shift usr/bin
+
+	vlicense ${_extractdir}/LICENSE
+}
