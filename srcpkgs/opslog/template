@@ -1,0 +1,27 @@
+# Template file for 'opslog'
+pkgname=opslog
+version=1.8
+revision=1
+archs=noarch
+hostmakedepends="python3-setuptools"
+makedepends="PyInstaller staticx python3-pandas"
+depends=""
+short_desc="Linux command line logging tool"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Denegal/opslog"
+distfiles="https://github.com/Denegal/opslog/archive/v${version}.tar.gz"
+checksum=979cc269087d1a8170adb778a9bc620cc1b20604353cb5521639579664d4122a
+
+do_build() {
+	pyinstaller -F opslog.py
+
+	staticx dist/opslog opslog
+}
+
+do_install() {
+	vbin opslog
+	vdoc install/OpsLog.pdf
+
+	vman install/opslog.1
+}
