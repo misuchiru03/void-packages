@@ -1,0 +1,46 @@
+# Template file for 'minecraft-server'
+pkgname=minecraft-server
+_tag=bb2b6b1aefcd70dfd1892149ac3a215f6c636b07
+version=1.15.2
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="wget"
+makedepends="lynx"
+depends="virtual?java-runtime"
+short_desc="Minecraft Server jar file"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="proprietary"
+homepage="https://www.minecraft.net"
+distfiles=https://launcher.mojang.com/v1/objects/${_tag}/server.jar
+checksum=80cf86dc2004ec6a2dc0183d1c75a9af3ba0669f7c332e4247afb1d76fb67e8a
+restricted=yes
+repository=nonfree
+system_groups="_minecraft"
+system_accounts="_minecraft"
+minecraft_groups="_minecraft"
+make_dirs="/opt/minecraft-server 0755 _minecraft _minecraft"
+minecraft_homedir="/opt/minecraft-server"
+_license_site="https://account.mojang.com/documents/minecraft_eula"
+
+do_fetch() {
+	${XBPS_FETCH_CMD} ${distfiles}
+}
+
+do_extract() {
+	mv ../server.jar .
+}
+
+do_install() {
+	lynx -dump ${_license_site} > LICENSE
+	vlicense LICENSE
+
+	vmkdir opt/${pkgname}
+	vcopy server.jar opt/${pkgname}/
+	vcopy ${FILESDIR}/eula.txt opt/${pkgname}
+	vcopy ${FILESDIR}/server.properties opt/${pkgname}
+
+	vsv minecraft-server
+
+	vbin ${FILESDIR}/minecraft-server.sh minecraft-server
+}

@@ -1,0 +1,8 @@
+case "$ACTION" in
+post)
+	sed -i "s/DATE/$(date '+%a %b %d %T %Z %Y')/" opt/minecraft-server/eula.txt
+	sed -i "s/DATE/$(date '+%a %b %d %T %Z %Y')/" opt/minecraft-server/server.properties
+	sed -i "s/false/true/" opt/minecraft-server/eula.txt
+	chown -R _minecraft:_minecraft opt/minecraft-server
+	;;
+esac

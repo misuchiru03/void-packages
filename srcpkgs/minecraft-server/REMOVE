@@ -1,0 +1,7 @@
+case "$ACTION" in
+purge)
+	sv stop minecraft-server
+	unlink /var/service/minecraft-server
+	[ -d etc/sv/minecraft-server ] && rm -rf etc/sv/minecraft-server
+        [ -d opt/minecraft-server ] && rm -rf opt/minecraft-server
+esac
