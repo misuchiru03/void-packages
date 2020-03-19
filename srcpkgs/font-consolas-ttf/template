@@ -1,16 +1,14 @@
 # Template file for 'font-consolas-ttf'
 pkgname=font-consolas-ttf
-version=1.0
+version=1.1
 revision=1
 archs="noarch"
 short_desc="Microsoft Consolas Fonts"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
-license="Proprietary"
+license="MIT"
 homepage="https://github.com/misuchiru03/font-consolas-ttf"
 distfiles="https://github.com/misuchiru03/font-consolas-ttf/archive/${version}.tar.gz"
-checksum=d9aca3137c38cc8f7b492c820cc171d8552d21cabb45aa4957b05b3877b15ce4
-repository=nonfree
-restricted=yes
+checksum=0dff4ebf6d3bc2fb76e243a386294b84777c85697a0e19b9dfcf8a04cf28f553
 
 do_install() {
 	for i in fonts/*.ttf; do
