@@ -1,20 +1,21 @@
 # Template file for 'opencl-amdgpu-standalone'
 pkgname=opencl-amdgpu-standalone
-_major=19.20
-_minor=812932
+_major=19.50
+_minor=1011208
 version=${_major}.${_minor}
 revision=1
 build_style=fetch
 only_for_archs="x86_64"
 restricted="yes"
 hostmakedepends="wget"
+makedepends="tar xz"
 depends="ocl-icd libdrm"
 short_desc="Proprietary standalone opencl stack for amdgpu"
 maintainer="lemmi <lemmi@nerd2nerd.org>"
 license="AMD-GPU-PRO"
 homepage="https://amd.com"
 distfiles="https://drivers.amd.com/drivers/linux/amdgpu-pro-${_major}-${_minor}-ubuntu-18.04.tar.xz"
-checksum=c5376760ce15454c5ef5cef86571f3806114403d91b8a210629d2e927c98d852
+checksum=99a964a9151242f48cf5e40c157dc5147eabc156d8074f9fa2e8de3e81e554de
 
 fetch_cmd='wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx -N'
 
@@ -39,7 +40,7 @@ do_build() {
 
     mkdir "${srcdir}/libdrm"
     cd "${srcdir}/libdrm"
-    ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_2.4.97-${minor}_amd64.deb"
+    ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_2.4.99-${minor}_amd64.deb"
     tar xJf data.tar.xz
     cd ${shared/amdgpu-pro/amdgpu}
     rm "libdrm_amdgpu.so.1"
