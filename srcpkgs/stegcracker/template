@@ -1,0 +1,18 @@
+# Template file for 'stegcracker'
+pkgname=stegcracker
+version=2.0.7
+revision=1
+wrksrc="StegCracker-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="steghide"
+short_desc="Steganography brute-force utility to uncover hidden data inside files"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://blog.paradoxis.nl/stegcracker-2-released-f03771ba855b"
+distfiles="https://github.com/Paradoxis/StegCracker/archive/v${version}.tar.gz"
+checksum=769a701732c73b9eecf9442d4ffd62ff9503d039000d7161428063cce1e9ea2b
+
+post_install() {
+	vlicense LICENSE.md LICENSE
+}
