@@ -1,0 +1,40 @@
+# Template file for 'onlyoffice'
+pkgname=onlyoffice
+version=5.5.1
+revision=1
+archs="x86_64"
+_debarch=amd64
+hostmakedepends="tar xz xdg-utils"
+depends="libstdc++ curl xdg-utils dejavu-fonts-ttf GConf"
+short_desc="OnlyOffice office suite"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="AGPL-3.0"
+homepage="https://www.onlyoffice.com"
+distfiles="https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_${_debarch}.deb"
+checksum=2e56595cebd0b2d248c4e52b96c8167c56ab52bb1ac6e9d8aaf3f99a31f97fff
+nopie=yes
+nostrip=yes
+allow_unknown_shlibs=yes
+
+do_extract() {
+	ar x ${XBPS_SRCDISTDIR}/onlyoffice-${version}/onlyoffice-desktopeditors_${_debarch}.deb
+	tar xf data.tar.xz --exclude={./etc,./opt/onlyoffice/cron}
+}
+
+do_install() {
+	vcopy opt .
+	vcopy usr .
+	mv ${DESTDIR}/usr/bin/onlyoffice-desktopeditors ${DESTDIR}/usr/bin/onlyoffice
+}
+
+post_install() {
+	#Add icons to the system icons
+	for icon in "${DESTDIR}/opt/onlyoffice/desktopeditors/asc-de-"*.png; do
+		size="${icon##*/asc-de-}"
+		${MASTERDIR}/usr/bin/xdg-icon-resource install --size ${size%.png} "$icon" "asc-de"
+	done
+	UPDATE_MENUS="$(which update-menus 2> /dev/null || true)"
+	if [ -x "$UPDATE_MENUS" ]; then
+		update-menus
+	fi
+}
