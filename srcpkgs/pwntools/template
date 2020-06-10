@@ -1,0 +1,27 @@
+# Template file for 'pwntools'
+pkgname=pwntools
+version=4.1.2
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="python3-devel"
+depends="python3-paramiko python3-Mako python3-pyelftools capstone-python3
+ python3-pyserial python3-requests python3-Pygments python3-pysocks
+ python3-dateutil python3-packaging python3-psutil python3-intervaltree
+ python3-sortedcontainers unicorn-python3 python3-six python3-setuptools
+ ROPgadget"
+short_desc="CTF framework and exploit development library"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://pwntools.com"
+distfiles="https://github.com/Gallopsled/pwntools/archive/${version}.tar.gz"
+checksum=23520351868d54e57c99c86de857701826872ef7ef20e85f1935cbb95e5e6e6d
+
+post_install() {
+	cd ${DESTDIR}/usr/bin
+	for f in *; do
+		mv $f pwntools-$f
+	done
+	cd -
+	vlicense LICENSE-pwntools.txt
+}
