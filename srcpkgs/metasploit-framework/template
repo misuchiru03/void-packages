@@ -1,38 +1,40 @@
 # Template file for 'metasploit-framework'
 pkgname=metasploit-framework
-_date=20200205
-version=5.0.73
+_date=20200612
+version=5.0.94
 revision=1
 archs="x86_64 i686 aarch64 armv7l armv7hf"
+hostmakedepends="tar"
 short_desc="Security testing framework"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="BSD-3-Clause"
 homepage="https://rapid7.com"
+python_version="2"
 
 if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
-	version=5.0.73
-	_timestamp=20200205112617
+	version=5.0.94
+	_timestamp=20200612102433
 	_arch="i386"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=2cfaa94be51109e48bc3671d96f0539c28aa08f2264b157f21016cb78eed6ef1
+	checksum=fba36607f89c875926a9c5b0b0cf543359a7c8f80716ec406d59ea25692eb4ac
 elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
-	version=5.0.73
-	_timestamp=20200205112602
+	version=5.0.94
+	_timestamp=20200612102420
 	_arch="amd64"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=bd7a13ad7232e6c59b87fd35a1787e9966c4f204c9271e4216c8010ab4d72a19
+	checksum=ba20178424153dad7941358330708cc7c2d89d7abc9622d30261c282cbaefffa
 elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
-	version=5.0.73
-	_timestamp=20200204103424
+	version=5.0.85
+	_timestamp=20200412093615
 	_arch="arm64"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=961d339077777f5a10959a4ae34275d8d46e56fac6337f5117d4248e00cf7774
+	checksum=c9fec1a8282b6aeb89fa96614f0b9e0805419e741692c50e9dbe662a67b2d949
 elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ] || [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
-	version=5.0.73
-	_timestamp=20200204103338
+	version=5.0.94
+	_timestamp=20200612093447
 	_arch="armhf"
 	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=d4d1b16cdbc44f2bec7cd2f9e11ab94fedfdc193bff2f4ad5ace153d15eb9ab6
+	checksum=2946decea3a36f03a85b77e87ae21fe5902a67b6272a2e4f2a9649a0ad6e58e1
 fi
 
 nopie=yes
