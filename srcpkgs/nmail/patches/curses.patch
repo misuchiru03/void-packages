@@ -1,0 +1,22 @@
+--- src/ui.h.orig
++++ src/ui.h
+@@ -11,7 +11,7 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ 
+ #include "config.h"
+ #include "imapmanager.h"
+--- src/util.cpp.orig
++++ src/util.cpp
+@@ -28,7 +28,7 @@
+ #endif
+ 
+ #include <libetpan/libetpan.h>
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ 
+ #include "apathy/path.hpp"
+ 
