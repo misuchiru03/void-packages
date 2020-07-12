@@ -1,0 +1,34 @@
+# Template file for 'minecraft-launcher'
+pkgname=minecraft-launcher
+version=2.1.15852
+revision=1
+wrksrc="minecraft-launcher"
+archs="x86_64"
+build_style=fetch
+hostmakedepends="lynx tar"
+depends="virtual?java-runtime"
+short_desc="Official Minecraft Launcher"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="proprietary"
+homepage="https://www.minecraft.net"
+distfiles="https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_${version}.tar.gz"
+checksum=5dd8ac2a19e683b0a8fe20f639faa0944334482e9abb9347820d1d34f5b5631a
+nopie=yes
+restricted=yes
+repository=nonfree
+_license_site="https://account.mojang.com/documents/minecraft_eula"
+
+do_extract() {
+	tar zxf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}.tar.gz
+}
+
+do_install() {
+	vmkdir opt/
+	cp -r * ${DESTDIR}/opt/${pkgname}
+
+	lynx -dump ${_license_site} > LICENSE
+	vlicense LICENSE
+
+	vmkdir usr/bin
+	ln -sf /opt/${pkgname}/${pkgname} ${DESTDIR}/usr/bin/minecraft
+}
