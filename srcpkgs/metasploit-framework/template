@@ -1,7 +1,7 @@
 # Template file for 'metasploit-framework'
 pkgname=metasploit-framework
-_date=20200813
-version=6.0.1
+_date=20200910
+version=6.0.5
 revision=1
 archs="x86_64 i686 aarch64 armv7l armv7hf"
 hostmakedepends="tar"
@@ -10,32 +10,31 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="BSD-3-Clause"
 homepage="https://rapid7.com"
 python_version="2"
-_gitinfo="git.2.6623d01"
 
 if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
-	version=6.0.1
-	_timestamp=20200813102450
+	version=6.0.5
+	_timestamp=20200910102453
 	_arch="i386"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}.${_gitinfo}~1rapid7-1_${_arch}.deb"
-	checksum=efff222aa1e499f5a9c9cfbb8eb0989df7940213720ff95816b7e61dbd712dfe
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=b3d2b653265e2a424af22b8b34ab413b4a2eb08d5ffc3610aaa9dc08bdf0d7f3
 elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
-	version=6.0.1
-	_timestamp=20200813102432
+	version=6.0.5
+	_timestamp=20200910102433
 	_arch="amd64"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}.${_gitinfo}~1rapid7-1_${_arch}.deb"
-	checksum=2fc0feb7f4b4b33ceaec06a4241219b9257687ee0dc15ac18e36f2589db82f77
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=738ab94d0a4dd03ffad0e947f3762a4fd172d910060537c8d4eaeddc77808bf0
 elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
 	version=5.0.85
 	_timestamp=20200412093615
 	_arch="arm64"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}.${_gitinfo}~1rapid7-1_${_arch}.deb"
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
 	checksum=c9fec1a8282b6aeb89fa96614f0b9e0805419e741692c50e9dbe662a67b2d949
 elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ] || [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
-	version=6.0.1
-	_timestamp=20200812093448
+	version=6.0.5
+	_timestamp=20200909093532
 	_arch="armhf"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}.${_gitinfo}~1rapid7-1_${_arch}.deb"
-	checksum=14ae7eb6669187d78ce9df58dddf45934ac0d6dc64d66b5492c0e515b76feba9
+	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=c68e63c267651e85e7ff753b9a751bf7631c40a24bedbe15488dc7f3fe94f417
 fi
 
 nopie=yes
