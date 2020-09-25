@@ -1,6 +1,6 @@
 # Template file for 'gotop'
 pkgname=gotop
-version=4.0.1
+version=3.5.3
 revision=1
 build_style=go
 go_import_path=github.com/xxxserxxx/gotop/cmd/gotop
@@ -10,7 +10,7 @@ maintainer="SolitudeSF <solitudesf@protonmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/xxxserxxx/gotop"
 distfiles="https://github.com/xxxserxxx/gotop/archive/v${version}.tar.gz"
-checksum=38a34543ed828ed8cedd93049d9634c2e578390543d4068c19f0d0c20aaf7ba0
+checksum=fd9ecc1f9fcd622dc88f93af87fdf6a12020cec424d742deb1865853b38d5605
 
 post_install() {
 	vlicense LICENSE
