@@ -1,0 +1,27 @@
+--- config/config.go.orig
++++ config/config.go
+@@ -106,12 +106,12 @@
+ 			"command": {
+ 				"i":          "mode-insert",
+ 				"/":          "mode-search",
+-				"k":          "channel-up",
+-				"j":          "channel-down",
++				"<up>":       "channel-up",
++				"<down>":     "channel-down",
+ 				"g":          "channel-top",
+ 				"G":          "channel-bottom",
+-				"K":          "thread-up",
+-				"J":          "thread-down",
++				"<pageup>":   "thread-up",
++				"<pagedown>": "thread-down",
+ 				"<previous>": "chat-up",
+ 				"C-b":        "chat-up",
+ 				"C-u":        "chat-up",
+@@ -121,6 +121,7 @@
+ 				"n":          "channel-search-next",
+ 				"N":          "channel-search-prev",
+ 				"'":          "channel-jump",
++				"<esc>":      "quit",
+ 				"q":          "quit",
+ 				"<f1>":       "help",
+ 			},
