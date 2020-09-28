@@ -1,0 +1,21 @@
+# Template file for 'slack-cli'
+pkgname=slack-cli
+version=0.18.0
+revision=1
+build_style=gnu-makefile
+makedepends="rsync"
+depends="bash"
+short_desc="Powerful Slack CLI via pure bash"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/rockymadden/slack-cli"
+distfiles="https://github.com/rockymadden/slack-cli/archive/v${version}.tar.gz"
+checksum=02738344cc000050e69f088941be29ce55b307bb41605494ff76d7c010a22960
+
+do_install() {
+	vbin src/slack /usr/bin/slack-cli
+}
+
+post_install() {
+	vlicense README.md
+}

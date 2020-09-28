@@ -1,0 +1,11 @@
+--- Makefile.orig
++++ Makefile
+@@ -1,6 +1,6 @@
+ .DEFAULT_GOAL := stub
+-bindir ?= ./build/bin
+-etcdir ?= ./build/etc
++bindir ?= /usr/bin
++etcdir ?= /etc
+ uname := $(shell uname -s)
+ 
+ clean: | uninstall
