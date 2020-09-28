@@ -1,6 +1,6 @@
 # Template file for 'cordless'
 pkgname=cordless
-version=2020.01.05
+version=2020.08.30
 revision=1
 wrksrc="${pkgname}-${version//./-}"
 build_style=go
@@ -11,7 +11,7 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/Bios-Marcel/${pkgname}"
 distfiles="https://github.com/Bios-Marcel/${pkgname}/archive/${version//./-}.tar.gz"
-checksum=ca86d772a5e00f915e63078ababfd6f96acdae4b251fe7b9e1e4fe9eb3c5bed9
+checksum=98791e2e5284cee645155a5aae1d449c0c4b95852f6c4c43062e814855e24cdf
 
 post_install() {
 	vlicense LICENSE
