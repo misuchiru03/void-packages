@@ -1,0 +1,57 @@
+# Template file for 'vmware-horizon-client'
+pkgname=vmware-horizon-client
+_subver=16522670
+version=8.0.0
+revision=1
+archs="x86_64"
+wrksrc="vmware-view-client-linux-2006-${version}-${_subver}"
+depends="gstreamer1 libgstreamerd gst-plugins-base1 eudev-libudev libva"
+short_desc="VMware Horizon Client for Linux"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://www.vmware.com"
+_vmwaresite="https://download3.vmware.com/software/view/viewclients/CART21FQ2"
+distfiles="${_vmwaresite}/${wrksrc}.tar.gz"
+checksum=8c46d49fea42f8c1f7cf32a5f038f5a47d2b304743b1e4f4c68c658621b0e79c
+
+pre_install() {
+	cd x64
+	find . -type f -name "*.tar.gz" -exec bsdtar xf {} \;
+}
+
+do_install() {
+	# VMware-Horizon-Client-2006-${version}-${_subver}.x86_64
+	for bin in x64/VMware-Horizon-Client-2006-${version}-${_subver}.x86_64/bin/*; do
+		vbin ${bin}
+	done
+	for doc in x64/VMware-Horizon-Client-2006-${version}-${_subver}.x86_64/doc/*; do
+		vdoc ${doc}
+	done
+	vmkdir usr
+	vcopy x64/VMware-Horizon-Client-2006-${version}-${_subver}.x86_64/share usr/
+	vcopy x64/VMware-Horizon-Client-2006-${version}-${_subver}.x86_64/lib usr/
+
+	vcopy x64/VMware-Horizon-PCoIP-2006-${version}-${_subver}.x64/lib usr/
+
+	for bin in x64/VMware-Horizon-USB-2006-${version}-${_subver}.x64/bin/*; do
+		vbin ${bin}
+	done
+
+	vcopy x64/VMware-Horizon-html5mmr-2006-${version}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-integratedPrinting-2006-${version}-${_subver}.x64/lib usr/ 
+	vcopy x64/VMware-Horizon-scannerClient-2006-${version}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-serialportClient-2006-${version}-${_subver}.x64/lib usr/
+
+	vsv vmware-usbarbitrator
+
+	vlicense x64/VMware-Horizon-Client-2006-${version}-${_subver}.x86_64/doc/open_source_licenses.txt LICENSE.txt
+}
+
+vmware-horizon-client-devel_package() {
+	depends="${sourcepkg}>=${version}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmkdir usr
+		vcopy x64/VMware-Horizon-Client-Linux-ClientSDK-2006-${version}-${_subver}.x64/include usr/
+	}
+}
