@@ -1,14 +1,16 @@
 # Template file for 'snooze'
 pkgname=snooze
+_commit="610e6b35ec614764770d47b5974b30fd90dce6fe"
 version=0.4
-revision=1
+revision=2
+wrksrc="${pkgname}-${_commit}"
 build_style=gnu-makefile
 short_desc="Run a command at a particular time"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="Public Domain"
 homepage="https://github.com/leahneukirchen/snooze"
-distfiles="https://github.com/leahneukirchen/snooze/archive/v${version}.tar.gz"
-checksum=1d1dc49edb3a96ddc6411b19e40e665dae47489fcc73465dd254e31816ca8eb0
+distfiles="https://github.com/leahneukirchen/snooze/archive/${_commit}.tar.gz"
+checksum=2533ac9260896c1dea297355a9927c2c4ac3d4fcbe092af76dbe669b282b01c5
 
 post_install() {
 	make -C sv install DESTDIR="$DESTDIR"
