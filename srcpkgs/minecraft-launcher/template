@@ -1,6 +1,6 @@
 # Template file for 'minecraft-launcher'
 pkgname=minecraft-launcher
-version=2.1.17627
+version=2.1.17785
 revision=1
 wrksrc="minecraft-launcher"
 archs="x86_64"
@@ -12,7 +12,7 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="proprietary"
 homepage="https://www.minecraft.net"
 distfiles="https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_${version}.tar.gz"
-checksum=c0ab8ae65951c1edaf7e45ae8a83bb8ee33727e089a9f55774dde90bbc97f213
+checksum=6c4a9022f69aef919ae12e93eb9bd41b18202f435954b14d9b9661689cafe0e4
 nopie=yes
 restricted=yes
 repository=nonfree
