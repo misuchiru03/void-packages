@@ -1,0 +1,26 @@
+# Template file for 'nativefier'
+pkgname=nativefier
+version=10.1.0
+revision=1
+archs="x86_64"
+makedepends="nodejs"
+depends="nodejs ImageMagick wine"
+short_desc="Electron-wrapping webapp building utility in node"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/jiahaog/nativefier"
+distfiles="https://github.com/jiahaog/nativefier/archive/v${version}.tar.gz"
+checksum=9c416da21e051a731c607a86a83516bbdba9c6512c8879667efa5760c42073cf
+
+do_install() {
+	vmkdir usr/lib/node_modules
+
+	npm install -g nativefier
+
+	vcopy ${XBPS_MASTERDIR}/usr/lib/node_modules/nativefier usr/lib/node_modules/
+
+	vmkdir usr/bin
+	vcopy ${XBPS_MASTERDIR}/usr/bin/nativefier usr/bin/
+
+	vlicense LICENSE.md
+}
