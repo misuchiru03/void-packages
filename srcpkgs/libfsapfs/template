@@ -1,0 +1,21 @@
+# Template file for 'libfsapfs'
+pkgname=libfsapfs
+version=20201107
+revision=1
+#archs="i686 x86_64"
+build_style=gnu-configure
+configure_args="--prefix=/usr"
+hostmakedepends="git libewf-devel zlib libcrypto46 tar pkg-config gettext-devel\
+ automake libtool autoconf"
+short_desc="Library to access the Apple File System (APFS)"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="LGPLv3+"
+homepage="https://github.com/libyal/libfsapfs/wiki/Home"
+distfiles="https://github.com/libyal/libfsapfs/archive/${version}.tar.gz"
+checksum=c93edea5297ac7bd5bfbd370663077cab26dbad9d01c9c14393386bbe88fa820
+
+pre_configure() {
+	./synclibs.sh
+	./autogen.sh
+	autoreconf -fi
+}
