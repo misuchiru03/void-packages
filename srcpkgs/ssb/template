@@ -1,0 +1,14 @@
+# Template file for 'ssb'
+pkgname=ssb
+version=0.0.1
+revision=1
+build_style=go
+go_import_path="ktbs.dev/ssb"
+hostmakedepends="git"
+depends="openssh"
+short_desc="SSH password recovery utility"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/kitabisa/ssb"
+distfiles="https://github.com/kitabisa/ssb/archive/v${version}.tar.gz"
+checksum=c30eb868d5fb8fbc3783f158f6d2fadf197d3268f53c5ec4b01eb1af12427e2d
