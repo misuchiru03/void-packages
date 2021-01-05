@@ -1,0 +1,26 @@
+# Template file for 'google-drive-ocamlfuse'
+pkgname=google-drive-ocamlfuse
+version=0.7.23
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=gnu-makefile
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends="ocaml"
+depends=""
+short_desc="FUSE filesystem for Google Drive, written in OCaml. It lets you mount your Google Drive on Linux"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://astrada.github.io/google-drive-ocamlfuse/"
+distfiles="https://github.com/astrada/google-drive-ocamlfuse/archive/v${version}.tar.gz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+
+post_install() {
+	vlicense LICENSE
+}
