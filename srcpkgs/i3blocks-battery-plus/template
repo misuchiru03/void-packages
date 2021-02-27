@@ -1,0 +1,21 @@
+# Template file for 'i3blocks-battery-plus'
+pkgname=i3blocks-battery-plus
+_commit=c6c90d947244ac260175e9c49aa4d215749e5990
+version=20200825
+revision=1
+wrksrc="${pkgname}-${_commit}"
+depends="i3blocks>=1.5 upower"
+short_desc="Enhanced battery status indicator for i3blocks"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/hastinbe/i3blocks-battery-plus"
+distfiles="${homepage}/archive/${_commit}.tar.gz"
+checksum=fb47259b3a037a4a168adaa11fee3ceaf33beff5485e036542d152cbe7bf7c94
+
+do_install() {
+	vmkdir usr/share/examples/i3blocks/battery-plus/
+	vcopy i3blocks.conf usr/share/examples/i3blocks/battery-plus/
+
+	vmkdir /usr/libexec/i3blocks
+	vinstall battery-plus 655 usr/libexec/i3blocks
+}
