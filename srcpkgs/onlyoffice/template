@@ -1,16 +1,18 @@
 # Template file for 'onlyoffice'
 pkgname=onlyoffice
-version=5.5.1
+version=6.2.0
 revision=1
+_type="desktopeditors"
 archs="x86_64"
 _debarch=amd64
-hostmakedepends="tar xz xdg-utils"
+hostmakedepends="tar xz xdg-utils lynx"
 depends="libstdc++ curl xdg-utils dejavu-fonts-ttf GConf"
 short_desc="OnlyOffice office suite"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
-license="AGPL-3.0"
+license="AGPL-3.0-or-later"
 homepage="https://www.onlyoffice.com"
-distfiles="https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_${_debarch}.deb"
+_gitrepo="https://github.com/ONLYOFFICE/DesktopEditors"
+distfiles="${_gitrepo}/archive/v${version}/${pkgname}-${_type}_${_debarch}.deb"
 checksum=2e56595cebd0b2d248c4e52b96c8167c56ab52bb1ac6e9d8aaf3f99a31f97fff
 nopie=yes
 nostrip=yes
@@ -21,6 +23,10 @@ do_extract() {
 	tar xf data.tar.xz --exclude={./etc,./opt/onlyoffice/cron}
 }
 
+pre_install() {
+	lynx --dump ${XBPS_BUILDDIR}/onlyoffice-6.2.0/opt/onlyoffice/desktopeditors/LICENSE.htm > LICENSE
+}
+
 do_install() {
 	vcopy opt .
 	vcopy usr .
@@ -28,6 +34,8 @@ do_install() {
 }
 
 post_install() {
+	vlicense LICENSE
+
 	#Add icons to the system icons
 	for icon in "${DESTDIR}/opt/onlyoffice/desktopeditors/asc-de-"*.png; do
 		size="${icon##*/asc-de-}"
