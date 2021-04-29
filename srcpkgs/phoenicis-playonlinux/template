@@ -1,0 +1,42 @@
+# Template file for 'phoenicis-playonlinux'
+pkgname=phoenicis-playonlinux
+_pkgname=phoenicis
+version=5.0
+revision=1
+_version=5.0-alpha.3
+wrksrc="${_pkgname}-${_version}"
+build_style=fetch
+hostmakedepends="wget"
+makedepends="tar unzip apache-maven openjdk11 git gradle fakeroot dpkg"
+depends="cabextract curl icoutils p7zip ImageMagick unzip wget wine xterm"
+short_desc="Install and use non-native applications on Linux"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://www.phoenicis.org/"
+distfiles="https://github.com/PhoenicisOrg/${_pkgname}/archive/refs/tags/v${_version}.tar.gz"
+checksum=6b3be12e08db85ef800cf7a03c26daf7689c8d541a40592d8560cfb5e132ec79
+nostrip=yes
+ignore_elf_dirs="/usr/share/phoenicis /usr/share/phoenicis/runtime"
+
+do_extract() {
+	local n="${pkgname}-${version}"
+	bsdtar xf ${XBPS_SRCDISTDIR}/${n}/v${_version}.tar.gz
+}
+
+do_build() {
+	cd ${wrksrc}/${_pkgname}-${_version}
+	pwd
+	ls -l
+	export JAVA_HOME="${XBPS_MASTERDIR}/usr/lib/jvm/openjdk11"
+	mvn clean package
+	cd phoenicis-dist/src/scripts
+	bash phoenicis-create-package.sh
+}
+
+do_install() {
+	vmkdir usr/bin
+	vmkdir usr/share
+	cd ${_pkgname}-${_version}/phoenicis-dist/target/Phoenicis_5.0-alpha-3
+	vcopy "usr/share/*" usr/share/
+	vbin usr/bin/phoenicis
+}
