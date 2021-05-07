@@ -1,0 +1,45 @@
+# Template file for 'android-messages-desktop'
+pkgname=android-messages-desktop
+version=5.1.1
+revision=1
+archs="x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=fetch
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="git gnutls"
+makedepends="yarn electron12"
+depends="libnotify libappindicator"
+short_desc="Android Messages as a cross-platform desktop app"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/OrangeDrangon/android-messages-desktop"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=616a3174809e60356ca9204fdb7a9d319f705746ed67533da95ea682d974231d
+
+do_extract() {
+	bsdtar xf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/v${version}.tar.gz
+}
+
+do_build() {
+	cd ${pkgname}-${version}
+	yarn add webpack
+	yarn --cache-folder yarn-cache
+	yarn build
+	./node_modules/.bin/electron-builder --linux dir
+}
+
+do_install() {
+	vlicense ${pkgname}-${version}/LICENSE
+
+	cd ${pkgname}-${version}/dist/linux-unpacked
+	vmkdir opt/${pkgname}
+	vcopy "*" opt/${pkgname}
+
+	vmkdir usr/bin
+	ln -sf /opt/${pkgname}/AndroidMessages ${DESTDIR}/usr/bin/${pkgname}
+}
