@@ -1,0 +1,31 @@
+# Template file for 'rbw'
+pkgname=rbw
+version=1.2.0
+revision=1
+archs="i686* x86_64*"
+build_style=cargo
+hostmakedepends="git"
+makedepends="cargo rust"
+depends="pinentry openssl"
+short_desc="Unofficial Bitwarden CLI"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://git.totz.net/rbw"
+distfiles="https://git.tozt.net/rbw/snapshot/rbw-${version}.tar.gz"
+checksum=17fce8f474486550b83a2487ba7febd05d4f279cc7c53e70594d6f8ea223f5b7
+
+do_build() {
+	cargo build --release --locked
+	cargo run --release --locked --bin rbw -- gen-completions bash >bash-completions
+}
+
+do_install() {
+	vmkdir usr/bin
+	vmkdir usr/share/bash-completion/completions/
+
+	vbin target/release/rbw
+	vbin target/release/rbw-agent
+	vcopy bash-completions ${DESTDIR}/usr/share/bash-completion/completions/
+
+	vlicense LICENSE
+}
