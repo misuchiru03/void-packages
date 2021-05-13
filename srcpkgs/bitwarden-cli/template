@@ -1,53 +1,21 @@
 # Template file for 'bitwarden-cli'
 pkgname=bitwarden-cli
-_jslibcommit="f80e89465ffc004705d2941301c0ffb6bfd71d1a"
-_nodeversion="10.24.0"
-version=1.15.1
+version=1.16.0
 revision=1
-#archs="i686 x86_64"
-#wrksrc=
-#create_wrksrc=yes
-#configure_args=""
-#make_build_args=""
-#make_install_args=""
-#conf_files=""
-#make_dirs="/var/log/dir 0755 root root"
-hostmakedepends=""
+wrksrc="cli-${version}"
 makedepends="nodejs"
-depends=""
+depends="nodejs"
 short_desc="Bitwarden password manager command line"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://bitwarden.com"
-distfiles="https://github.com/bitwarden/cli/archive/v${version}.tar.gz
- https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz"
-checksum="
- "
-
-pre_build() {
-	rmdir ${wrksrc}/jslib
-	ln -s ${wrksrc}/jslib-${_jslibcommit} ${wrksrc}/cli-${version}/jslib
-}
-
-do_build() {
-	export npm_config_cache="${wrksrc}/npm_cache"
-	local npm_prefix=$(npm config get prefix)
-	npm config delete prefix
-	npm install ${_nodeversion} && npm use ${_nodeversion}
-
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	cd ${wrksrc}/jslib
-	npm install
-	cd ${wrksrc}
-	npm install
-	npm run build:prod
-	npm run clean
-	npm run package:lin
-	./dist/linux/bw completion --shell bash > _bw
-
-	npm config set prefix ${npm_prefix}
-}
+distfiles="https://github.com/bitwarden/cli/archive/v${version}.tar.gz"
+checksum=b4df7122e99281f63c6666911158299a33c3690a43667aab8436e0dc59089702
 
 do_install() {
-	install -dm755 ${wrksrc}/
+	vmkdir usr/bin
+	vmkdir usr/lib/node_modules
+	npm -g install @bitwarden/cli
+	cp -R "${XBPS_MASTERDIR}/usr/lib/node_modules/@bitwarden" "${DESTDIR}/usr/lib/node_modules"
+	ln -s "/usr/lib/node_modules/@bitwarden/cli/build/bw.js" "${DESTDIR}/usr/bin/bw"
 }
