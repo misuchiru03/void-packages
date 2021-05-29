@@ -1,0 +1,12 @@
+# Template file for 'stonks'
+pkgname=stonks
+version=1.0.9
+revision=1
+build_style=go
+go_import_path="github.com/ericm/stonks"
+short_desc="Terminal-based stock visualizer and tracker"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/ericm/stonks"
+distfiles="https://github.com/ericm/stonks/archive/refs/tags/v${version}.tar.gz"
+checksum=ce99ab0cb89248786623eb8e943d2c1b6ed5fbc48d9974d221bfed24f3c59d36
