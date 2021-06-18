@@ -1,0 +1,14 @@
+# Template file for 'python3-pybluez'
+pkgname=python3-pybluez
+version=0.41
+revision=1
+wrksrc=pybluez2-${version}
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="python3-devel libbluetooth-devel"
+short_desc="Bluetooth Python extension module"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://pybluez.github.io/"
+distfiles="${PYPI_SITE}/p/pybluez2/pybluez2-${version}.tar.gz"
+checksum=0855b2f99b8326de7fb06f33725049599c80e7c9ac58628ebb65c46b66a0469d
