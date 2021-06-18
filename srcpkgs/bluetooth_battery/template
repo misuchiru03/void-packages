@@ -1,0 +1,14 @@
+# Template file for 'bluetooth_battery'
+pkgname=bluetooth_battery
+version=1.2.0
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="python3-devel libbluetooth-devel"
+depends="python3-pybluez"
+short_desc="Get battery level from Bluetooth headsets"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/TheWeirdDev/Bluetooth_Headset_Battery_Level"
+distfiles="${PYPI_SITE}/b/bluetooth_battery/bluetooth_battery-${version}.tar.gz"
+checksum=dc039cdb56b5e1ea05b6eca014734929537e8a56c79aae5d52461f43c9c7f56b
