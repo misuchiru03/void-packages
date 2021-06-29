@@ -1,6 +1,7 @@
 # Template file for 'minecraft-launcher'
 pkgname=minecraft-launcher
-version=2.2.909
+version=2.2.928
+_version=928
 revision=1
 wrksrc="minecraft-launcher"
 archs="x86_64"
@@ -11,15 +12,15 @@ short_desc="Official Minecraft Launcher"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="proprietary"
 homepage="https://www.minecraft.net"
-distfiles="https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_${version}.tar.gz"
-checksum=02e6067790bb65b2f0229ae297806bbdc77d1d1934f8a49d5ca21286728da297
+distfiles="https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_${_version}.tar.gz"
+checksum=2d7b7ea3835536b6900d0201957c6d96d646354fd071badab2ff750344eba5c6
 nopie=yes
 restricted=yes
 repository=nonfree
 _license_site="https://account.mojang.com/documents/minecraft_eula"
 
 do_extract() {
-	tar zxf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}.tar.gz
+	tar zxf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${_version}.tar.gz
 }
 
 do_install() {
