@@ -1,0 +1,21 @@
+# Template file for 'brother-mfcj615w-cupswrapper'
+pkgname=brother-mfcj615w-cupswrapper
+version=20210815
+revision=1
+build_style=fetch
+short_desc="Drivers and cups wrapper for Brother MFC-J615W printer"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://brother.com"
+distfiles="https://github.com/misuchiru03/brother-mfcj615w-cupswrapper/archive/${version}.tar.gz"
+checksum=885e992e2d1caea7c17339e05e8fdcf96fb29202e76da547d330626c4989cdf6
+nopie=yes
+
+do_extract() {
+	bsdtar zxf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${version}.tar.gz
+}
+
+do_install() {
+	cd ${pkgname}-${version}
+	cp -r opt ${DESTDIR}/
+}
