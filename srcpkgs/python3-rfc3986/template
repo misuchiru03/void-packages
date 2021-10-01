@@ -1,0 +1,14 @@
+# Template file for 'python3-rfc3986'
+pkgname=python3-rfc3986
+version=1.5.0
+revision=1
+wrksrc="rfc3986-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+checkdepends="${depends} python3-pytest"
+short_desc="Python implementation of RFC 3986 including validation and parsing"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="Apache-2.0"
+homepage="http://rfc3986.readthedocs.io/"
+distfiles="${PYPI_SITE}/r/rfc3986/rfc3986-${version}.tar.gz"
+checksum=270aaf10d87d0d4e095063c65bf3ddbc6ee3d0b226328ce21e036f946e421835
