@@ -1,0 +1,11 @@
+--- no-more-secrets-1.0.1/src/nmstermio.c.orig
++++ no-more-secrets-1.0.1/src/nmstermio.c
+@@ -296,7 +296,7 @@
+ 	static int state = 1;
+ 
+ 	if (!isatty(STDIN_FILENO)) {
+-		stdin = freopen("/dev/tty", "r", stdin);
++		freopen("/dev/tty", "r", stdin);
+ 	}
+ 	
+ 	if (s == 0) {
