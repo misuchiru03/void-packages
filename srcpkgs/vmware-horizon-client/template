@@ -1,18 +1,19 @@
 # Template file for 'vmware-horizon-client'
 pkgname=vmware-horizon-client
-_subver=17742757
-version=8.2.0
+_ver=8.3.1
+_subver=18435609
+version=2106.1
 revision=1
 archs="x86_64"
-wrksrc="VMware-Horizon-Client-Linux-2103-${version}-${_subver}"
+wrksrc="VMware-Horizon-Client-Linux-${version}-${_ver}-${_subver}"
 depends="gstreamer1 libgstreamerd gst-plugins-base1 eudev-libudev libva"
 short_desc="VMware Horizon Client for Linux"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="MIT"
 homepage="https://www.vmware.com"
-_vmwaresite="https://download3.vmware.com/software/view/viewclients/CART22FQ1"
-distfiles="${_vmwaresite}/VMware-Horizon-Client-Linux-2103-${version}-${_subver}.tar.gz"
-checksum=62f95bb802b058a98f5ee6c2296b89bd7e15884a24dc8a8ba7ce89de7e0798e4
+_vmwaresite="https://download3.vmware.com/software/view/viewclients/CART22FQ2"
+distfiles="${_vmwaresite}/${wrksrc}.tar.gz"
+checksum=b42ddb9d7e9c8d0f8b86b69344fcfca45251c5a5f1e06a18a3334d5a04e18c39
 
 pre_install() {
 	cd x64
@@ -20,31 +21,31 @@ pre_install() {
 }
 
 do_install() {
-	# VMware-Horizon-Client-2103-${version}-${_subver}.x86_64
-	for bin in x64/VMware-Horizon-Client-2103-${version}-${_subver}.x64/bin/*; do
+	# VMware-Horizon-Client-${version}-${_ver}-${_subver}.x86_64
+	for bin in x64/VMware-Horizon-Client-${version}-${_ver}-${_subver}.x64/bin/*; do
 		vbin ${bin}
 	done
-	for doc in x64/VMware-Horizon-Client-2103-${version}-${_subver}.x64/doc/*; do
+	for doc in x64/VMware-Horizon-Client-${version}-${_ver}-${_subver}.x64/doc/*; do
 		vdoc ${doc}
 	done
 	vmkdir usr
-	vcopy x64/VMware-Horizon-Client-2103-${version}-${_subver}.x64/share usr/
-	vcopy x64/VMware-Horizon-Client-2103-${version}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-Client-${version}-${_ver}-${_subver}.x64/share usr/
+	vcopy x64/VMware-Horizon-Client-${version}-${_ver}-${_subver}.x64/lib usr/
 
-	vcopy x64/VMware-Horizon-PCoIP-2103-${version}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-PCoIP-${version}-${_ver}-${_subver}.x64/lib usr/
 
-	for bin in x64/VMware-Horizon-USB-2103-${version}-${_subver}.x64/bin/*; do
+	for bin in x64/VMware-Horizon-USB-${version}-${_ver}-${_subver}.x64/bin/*; do
 		vbin ${bin}
 	done
 
-	vcopy x64/VMware-Horizon-html5mmr-2103-${version}-${_subver}.x64/lib usr/
-	vcopy x64/VMware-Horizon-integratedPrinting-2103-${version}-${_subver}.x64/lib usr/ 
-	vcopy x64/VMware-Horizon-scannerClient-2103-${version}-${_subver}.x64/lib usr/
-	vcopy x64/VMware-Horizon-serialportClient-2103-${version}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-html5mmr-${version}-${_ver}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-integratedPrinting-${version}-${_ver}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-scannerClient-${version}-${_ver}-${_subver}.x64/lib usr/
+	vcopy x64/VMware-Horizon-serialportClient-${version}-${_ver}-${_subver}.x64/lib usr/
 
 	vsv vmware-usbarbitrator
 
-	vlicense x64/VMware-Horizon-Client-2103-${version}-${_subver}.x64/doc/open_source_licenses.txt LICENSE.txt
+	vlicense x64/VMware-Horizon-Client-${version}-${_ver}-${_subver}.x64/doc/open_source_licenses.txt LICENSE.txt
 }
 
 vmware-horizon-client-devel_package() {
@@ -52,6 +53,6 @@ vmware-horizon-client-devel_package() {
 	short_desc+=" - development files"
 	pkg_install() {
 		vmkdir usr
-		vcopy x64/VMware-Horizon-Client-Linux-ClientSDK-2103-${version}-${_subver}.x64/include usr/
+		vcopy x64/VMware-Horizon-Client-Linux-ClientSDK-${version}-${_ver}-${_subver}.x64/include usr/
 	}
 }
