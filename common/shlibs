@@ -16,6 +16,9 @@
 # PLEASE NOTE: when multiple packages provide the same SONAME, the first
 # one (order top->bottom) is preferred over the next ones.
 #
+libudev.so.0 eudev-libudev-3.2.10_1
+libva.so.1 libva-2.12.0_1
+libva-x11.so.1 libva-2.12.0_1
 libc.so musl-1.1.24_7
 libc.so.6 glibc-2.32_1
 libm.so.6 glibc-2.32_1
