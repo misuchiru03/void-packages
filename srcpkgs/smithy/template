@@ -1,0 +1,13 @@
+# Template file for 'smithy'
+pkgname=smithy
+version=0.3.0
+revision=1
+wrksrc="smithy-tags-v${version}"
+build_style=go
+go_import_path="github.com/honza/smithy"
+short_desc="Web front-end for git repositories"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/honza/smithy"
+distfiles="https://github.com/honza/smithy/archive/tags/v${version}.tar.gz"
+checksum=7d486291bd2619dc8a592e453807db2705c61ed45666b4e3c7579c61d762cd39
