@@ -1,7 +1,9 @@
 # Template file for 'flameshot'
 pkgname=flameshot
+_commit=73d64e29878ad49ac2b2039311abccafb5331a00
 version=0.10.2
-revision=1
+revision=2
+wrksrc="flameshot-${_commit}"
 build_style=cmake
 hostmakedepends="qt5-qmake qt5-host-tools"
 makedepends="qt5-svg-devel qt5-tools-devel"
@@ -9,6 +11,6 @@ depends="desktop-file-utils qt5-svg"
 short_desc="Powerful yet simple to use screenshot software for GNU/Linux"
 maintainer="Neel Chotai <neel@chot.ai>"
 license="GPL-3.0-or-later"
-homepage="https://github.com/lupoDharkael/flameshot"
-distfiles="https://github.com/lupoDharkael/flameshot/archive/v${version}.tar.gz"
-checksum=951c8170b7be2f12e4446f6367e8fa176eb3489fe24c0cef8dfda0bd180e61f9
+homepage="https://github.com/flameshot-org/flameshot"
+distfiles="https://github.com/flameshot-org/flameshot/archive/${_commit}.tar.gz"
+checksum=0361752ce73ae5b915e55024332f54c9fe3c04f27a5212e85a1c51c2c5246edf
