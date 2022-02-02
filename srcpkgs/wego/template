@@ -1,7 +1,9 @@
 # Template file for 'wego'
 pkgname=wego
 version=2.0
-revision=13
+_git=994e4f141759a1070d7b0c8fbe5fad2cc7ee7d45
+revision=14
+wrksrc="${pkgname}-${_git}"
 hostmakedepends="git"
 build_style=go
 go_import_path=github.com/schachmat/wego
@@ -9,8 +11,8 @@ short_desc="Weather client for the terminal"
 maintainer="Michael Aldridge <maldridge@voidlinux.org>"
 license="ISC"
 homepage="https://github.com/schachmat/wego"
-distfiles=${homepage}/archive/${version}.tar.gz
-checksum=d63d79520b385c4ed921c7decc37a0b85c40af66600f8a5733514e04d3048075
+distfiles=${homepage}/archive/${_git}.tar.gz
+checksum=78400a6a437280ce87e3041aac8c5200b0e64b0968bfcb19b91d4778851faaec
 
 post_install() {
 	vlicense LICENSE
