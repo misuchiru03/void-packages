@@ -1,0 +1,18 @@
+# Template file for 'wl-mirror'
+pkgname=wl-mirror
+version=0.8.1
+revision=1
+build_style=cmake
+hostmakedepends="wayland-devel"
+makedepends="libglvnd-devel wayland-devel"
+depends="wayland"
+short_desc="Simple Wayland output mirror client"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Ferdi265/wl-mirror"
+distfiles="${homepage}/releases/download/v${version}/wl-mirror-${version}.tar.gz"
+checksum=b77b00f67aca89122e089cb2e56b578b8a9648861481da16f071cd125e5c5d77
+
+post_install() {
+	vcompletion ${FILESDIR}/wl-mirror.bash-completion bash
+}

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+_wlmirror() {
+	local cur prev opts cword
+	_init_completion || return
+
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+        prev="${COMP_WORDS[COMP_CWORD-1]}"
+	displays_dir="/sys/class/drm"
+	displays="$(grep -R "^connected" ${displays_dir}/*/status | cut -f2-3 -d- | cut -f1 -d/)"
+	opts="-h -v -c -i -s -t -r -S ${displays}"
+	scaling="l n e T R"
+	transform="normal flip{X,Y} 0c{,c}w 90c{,c}w 180c{,c}w 270c{,c}w flipped 0 90 180 270"
+	case "${prev}" in
+		-s)
+			COMPREPLY=( $( compgen -W "${scaling}" -- ${cur} ) )
+			return 0
+			;;
+		-t)
+			COMPREPLY=( $( compgen -W "${transform}" -- ${cur} ) )
+			return 0
+			;;
+#		-r)
+#			COMPREPLY=( $( compgen -W -- ${cur} ) )
+#			return 0
+#			;;
+		*)
+			COMPREPLY=( $( compgen -W "${opts}" -- ${cur} ) )
+			return 0
+			;;
+	esac
+}
+
+complete -F _wlmirror wl-mirror
