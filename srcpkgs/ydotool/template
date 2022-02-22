@@ -1,0 +1,39 @@
+# Template file for 'ydotool'
+pkgname=ydotool
+version=1.0.1
+revision=1
+build_style=cmake
+makedepends="scdoc"
+short_desc="Generic Linux command-line automation tool for wayland and more"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="AGPL-3.0-or-later"
+homepage="https://github.com/ReimuNotMoe"
+distfiles="https://github.com/ReimuNotMoe/ydotool/archive/refs/tags/v${version}.tar.gz"
+checksum=02311cdc608f205711b06a95e5fd71093b2294f4920efc526f5e98a2ddab42b8
+
+system_accounts="_ydotoold"
+_ydotoold_groups="input"
+
+# patches a dependency pulled by CPM, so it must be done after configure
+#post_configure() {
+#	patch -sl -Np0 -i ${FILESDIR}/iodash-musl.patch 2>/dev/null
+#}
+
+do_install() {
+	vbin build/ydotool
+	vbin build/ydotoold
+}
+
+post_install() {
+	vsv ydotoold
+
+	vinstall ${FILESDIR}/80-uinput.rules 644 usr/lib/udev/rules.d
+
+	scdoc < manpage/ydotool.1.scd > ydotool.1
+	scdoc < manpage/ydotoold.8.scd > ydotoold.8
+
+	vman ydotool.1
+	vman ydotoold.8
+
+	vlicense LICENSE
+}

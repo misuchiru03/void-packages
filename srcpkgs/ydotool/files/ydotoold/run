@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec chpst -u _ydotoold:input /usr/bin/ydotoold --socket-perm 660 2>&1
