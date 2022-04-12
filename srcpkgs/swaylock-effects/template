@@ -1,0 +1,23 @@
+# Template file for 'swaylock-effects'
+pkgname=swaylock-effects
+version=1.6
+_commit=a8fc557b86e70f2f7a30ca9ff9b3124f89e7f204
+revision=1
+wrksrc="${pkgname}-${_commit}"
+build_style=meson
+conf_files="/etc/pam.d/swaylock"
+hostmakedepends="pkg-config wayland-devel scdoc git cmake"
+makedepends="wayland-protocols cairo-devel gdk-pixbuf-devel pam-devel
+ libxkbcommon-devel wayland-devel libgomp-devel bash-completion fish-shell
+ cairo-devel"
+short_desc="Swaylock, with fancy effects"
+replaces=swaylock>=0
+maintainer="Alex Childs <misuchiru+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/mortie/swaylock-effects"
+distfiles="https://github.com/mortie/${pkgname}/archive/${_commit}.tar.gz"
+checksum=c89f57981711416447182fa234b4c0425343665a5929694798da1fb4f08718f1
+
+post_install() {
+	vlicense LICENSE
+}
