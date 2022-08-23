@@ -1,7 +1,9 @@
 # Template file for 'nginx'
 pkgname=nginx
 version=1.22.0
-revision=1
+revision=2
+_ngx_ver=0.5.2
+_ngx_commit=6cdffdb
 _tests_commit=18ac4d9e5a2a
 create_wrksrc=yes
 build_wrksrc="nginx-${version}"
@@ -14,9 +16,13 @@ maintainer="Duncaen <duncaen@voidlinux.org>"
 license="BSD-2-Clause"
 homepage="https://nginx.org"
 distfiles="https://nginx.org/download/nginx-${version}.tar.gz
+ https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_ngx_ver}/ngx-fancyindex-${_ngx_ver}.tar.xz
  https://hg.nginx.org/nginx-tests/archive/${_tests_commit}.tar.gz"
+
 checksum="b33d569a6f11a01433a57ce17e83935e953ad4dc77cdd4d40f896c88ac26eb53
+ 04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656
  e34ef2f38512e1c04ee201c3b68f7ba7ec8f1537dc6a500278bc2219ab435228"
+
 # Tests fail when nginx run as root and there is no nginx user
 make_check=ci-skip
 
@@ -39,7 +45,7 @@ make_dirs="/var/log/nginx 0750 root root
  /var/tmp 1777 root root
  /var/tmp/nginx 0750 nginx root"
 
-build_options="geoip stream slice"
+build_options="geoip stream slice fancyindex"
 desc_option_stream="Enable support for stream proxies"
 desc_option_slice="Enable support for slice filters"
 build_options_default="geoip stream slice"
@@ -88,6 +94,7 @@ do_configure() {
 		--with-mail_ssl_module \
 		--with-pcre-jit \
 		--with-threads \
+		$(vopt_if fancyindex --add-module=../ngx-fancyindex-${_ngx_ver}) \
 		$(vopt_if geoip --with-http_geoip_module) \
 		$(vopt_if stream "$stream_modules") \
 		$(vopt_if slice --with-http_slice_module)
