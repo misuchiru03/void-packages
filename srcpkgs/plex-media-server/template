@@ -1,11 +1,13 @@
 # Template file for 'plex-media-server'
 pkgname=plex-media-server
-version=1.15.3.876
+version=1.28.1.6104
 revision=4
-_suffix=ad6e39743
+_suffix=788f82488
 archs="i686 x86_64 armv7 aarch64"
 create_wrksrc=yes
 hostmakedepends="tar xz"
+depends="glibc libssl1.1 libcrypto1.1 libswresample libavutil libva gtest libswscale
+ libavformat libdrm libpciaccess fmt libavfilter taglib miniupnpc editline libusb"
 short_desc="Plex Media Server"
 maintainer="Anachron <gith@cron.world>"
 license="custom:Proprietary"
@@ -14,6 +16,8 @@ restricted=yes
 repository=nonfree
 system_accounts="_plex"
 python_version=2
+# libc.so contained here resolves in common/shlibs to musl-1.1.24_7
+noverifyrdeps=yes
 # See https://support.plex.tv/articles/categories/plex-media-server/
 
 case "$XBPS_TARGET_MACHINE" in
@@ -23,7 +27,7 @@ case "$XBPS_TARGET_MACHINE" in
 			;;
 		x86_64*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_amd64.deb"
-			checksum="a432d6a46fdc0117e9f3529e032ab1fc7ad25f705b9be5dad850108d89a5ca79"
+			checksum="0eb7fe6fe9f28fec9f5e31418e2dd7c31d89fb70865ce696d35b31920ccc7fd7"
 			;;
 		armv7*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_armhf.deb"
@@ -44,10 +48,9 @@ do_extract() {
 	fn="${distfiles##*/}"
 	ar x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${fn}"
 	tar xf data.tar.xz
-	mv usr/{s,}bin
+	mkdir -p etc/default usr/bin
 	cp "${FILESDIR}/default" etc/default/plexmediaserver
 	cp "${FILESDIR}/start_pms" usr/bin/start_pms
-	rm -r etc/{apt,init}
 }
 
 do_install() {
