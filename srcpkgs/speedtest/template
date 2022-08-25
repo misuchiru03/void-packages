@@ -1,6 +1,6 @@
 # Template file for 'speedtest'
 pkgname=speedtest
-version=1.0.0
+version=1.2.0
 revision=1
 archs="i686 x86_64 armv6l aarch64 armv7l armv7hf"
 create_wrksrc=yes
@@ -14,23 +14,23 @@ conflicts="speedtest-cli>=0"
 _filename="speedtest-${version}.tar.gz"
 
 if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
-	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-i386-linux.tgz"
-	checksum=828362e559e53d80b3579df032fe756a0993cf33934416fa72e9d69c8025321b
+	distfiles="https://install.speedtest.net/app/cli/ookla-speedtest-${version}-linux-i386.tgz"
+	checksum=3953d231da3783e2bf8904b6dd72767c5c6e533e163d3742fd0437affa431bd3
 elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
-	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-x86_64-linux.tgz"
-	checksum=5fe2028f0d4427e4f4231d9f9cf70e6691bb890a70636d75232fe4d970633168
+	distfiles="https://install.speedtest.net/app/cli/ookla-speedtest-${version}-linux-x86_64.tgz"
+	checksum=5690596c54ff9bed63fa3732f818a05dbc2db19ad36ed68f21ca5f64d5cfeeb7
 elif [ "$XBPS_TARGET_MACHINE" == "armv6l" ]; then
-	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-arm-linux.tgz"
-	checksum=0fa7b3237d0fe4fa15bc1e7cb27ccac63b02a2679b71c2879d59dd75d3c9235d
+	distfiles="https://install.speedtest.net/app/cli/ookla-speedtest-${version}-linux-armel.tgz"
+	checksum=629a455a2879224bd0dbd4b36d8c721dda540717937e4660b4d2c966029466bf
 elif [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
-	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-armhf-linux.tgz"
-	checksum=04b54991cfb9492ea8b2a3500340e7eeb78065a00ad25a032be7763f1415decb
+	distfiles="https://install.speedtest.net/app/cli/ookla-speedtest-${version}-linux-armel.tgz"
+	checksum=629a455a2879224bd0dbd4b36d8c721dda540717937e4660b4d2c966029466bf
 elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ]; then
-	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-armhf-linux.tgz"
-	checksum=04b54991cfb9492ea8b2a3500340e7eeb78065a00ad25a032be7763f1415decb
+	distfiles="https://install.speedtest.net/app/cli/ookla-speedtest-${version}-linux-armhf.tgz"
+	checksum=e45fcdebbd8a185553535533dd032d6b10bc8c64eee4139b1147b9c09835d08d
 elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
-	distfiles="https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${version}-aarch64-linux.tgz"
-	checksum=073684dc3490508ca01b04c5855e04cfd797fed33f6ea6a6edc26dfbc6f6aa9e
+	distfiles="https://install.speedtest.net/app/cli/ookla-speedtest-${version}-linux-aarch64.tgz"
+	checksum=3953d231da3783e2bf8904b6dd72767c5c6e533e163d3742fd0437affa431bd3
 fi
 
 do_fetch() {
