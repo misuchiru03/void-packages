@@ -1,0 +1,23 @@
+# Template file for 'gstreamer-player'
+pkgname=gstreamer-player
+version=1.1.2
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends=""
+depends=""
+short_desc="Python3 audio player based on gstreamer"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/happyleavesaoc/gstreamer-player/"
+#changelog=""
+distfiles="${PYPI_SITE}/g/gstreamer-player/gstreamer-player-${version}.tar.gz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
