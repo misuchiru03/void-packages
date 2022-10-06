@@ -1,0 +1,23 @@
+# Template file for 'python3-pyinstaller-hooks-contrib'
+pkgname=python3-pyinstaller-hooks-contrib
+version=2022.10
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=python3-module
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends=""
+depends=""
+short_desc="PyInstaller community hooks repository"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage=""
+#changelog=""
+distfiles="${PYPI_SITE}/p/pyinstaller-hooks-contrib/pyinstaller-hooks-contrib-${version}.tar.gz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
