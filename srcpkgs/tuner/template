@@ -1,0 +1,24 @@
+# Template file for 'tuner'
+pkgname=tuner
+version=1.5.1
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=meson
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="vala pkg-config cmake"
+makedepends="granite-devel gstreamer1-devel gtk+3-devel libsoup-devel json-glib-devel
+ libgee08-devel geoclue2-devel glib-devel"
+depends=""
+short_desc="Minimalist radio station player"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/louis77/tuner"
+#changelog=""
+distfiles="https://github.com/louis77/tuner/archive/refs/tags/${version}.tar.gz"
+checksum=bbb5e7c97da1ee495651d85aca33c2fe58daba81906ae247e12b6a41b1ed7592
