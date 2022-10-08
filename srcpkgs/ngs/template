@@ -1,0 +1,27 @@
+# Template file for 'ngs'
+pkgname=ngs
+version=0.2.14
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=gnu-makefile
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="pkg-config cmake pandoc gcc"
+makedepends="libffi-devel gc-devel json-c-devel peg pcre-devel"
+depends=""
+short_desc="Next Generation Shell is a modern programming language for DevOps"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://ngs-lang.org"
+#changelog=""
+distfiles="https://github.com/ngs-lang/ngs/archive/v${version}.tar.gz"
+checksum=9432377548ef76c57918b020b2abb258137703ff0172016d58d713186fcafed3
+
+do_build() {
+	make build
+}
