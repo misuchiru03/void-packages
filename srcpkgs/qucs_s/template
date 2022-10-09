@@ -1,0 +1,24 @@
+# Template file for 'qucs_s'
+pkgname=qucs_s
+version=0.0.24
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=cmake
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends="qt5-script-devel qt6-base-devel qt6-tools-devel qt5-svg-devel
+ qt5-tools-devel"
+depends="ngspice"
+short_desc="GUI for different circuit simulation kernels"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/ra3xdh/qucs_s"
+#changelog=""
+distfiles="https://github.com/ra3xdh/qucs_s/archive/${version}.tar.gz"
+checksum=f4d26c146ce8d2bd6d5837ef288d87eeed9399e09c21376c858543d6e55caeed
