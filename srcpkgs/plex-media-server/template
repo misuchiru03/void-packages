@@ -1,8 +1,8 @@
 # Template file for 'plex-media-server'
 pkgname=plex-media-server
-version=1.28.2.6151
+version=1.29.0.6244
 revision=1
-_suffix=914ddd2b3
+_suffix=819d3678c
 archs="i686 x86_64 armv7 aarch64"
 create_wrksrc=yes
 hostmakedepends="tar xz"
@@ -27,7 +27,7 @@ case "$XBPS_TARGET_MACHINE" in
 			;;
 		x86_64*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_amd64.deb"
-			checksum="27cb10fdf2f3d344e2cb991af8cf492176d053321f181be87e2197eecb567fce"
+			checksum="88630eeaeb8d9b673b50166f039758692c54ac44022f5b51f732c0deb661067e"
 			;;
 		armv7*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_armhf.deb"
