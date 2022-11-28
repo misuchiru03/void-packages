@@ -1,11 +1,11 @@
 # Template file for 'bluez'
 pkgname=bluez
 version=5.65
-revision=1
+revision=2
 build_style=gnu-configure
 configure_args="--with-udevdir=/usr/lib/udev --disable-systemd
  --enable-sixaxis --enable-threads --enable-library --enable-deprecated
- --enable-external-ell $(vopt_enable mesh) $(vopt_enable nfc)
+ --enable-external-ell --enable-hid2hci $(vopt_enable mesh) $(vopt_enable nfc)
  $(vopt_enable experimental)"
 hostmakedepends="automake flex libtool pkg-config python3-docutils"
 makedepends="cups-devel eudev-libudev-devel libglib-devel libical-devel
@@ -39,6 +39,7 @@ post_install() {
 	vbin attrib/gatttool
 	vbin tools/btgatt-client
 	vbin tools/btgatt-server
+	vbin tools/hid2hci
 	vsv bluetoothd
 	if [ "$build_option_mesh" ]; then
 		vsv bluetooth-meshd
