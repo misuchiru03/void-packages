@@ -1,7 +1,9 @@
 # Template file for 'nginx'
 pkgname=nginx
-version=1.22.1
-revision=1
+version=1.22.0
+revision=3
+_ngx_ver=0.5.2
+_ngx_commit=6cdffdb
 _tests_commit=18ac4d9e5a2a
 _njs_version=0.7.7
 create_wrksrc=yes
@@ -40,14 +42,16 @@ configure_args="--prefix=${_cfgdir}
  --with-http_perl_module=dynamic
  --with-stream=dynamic
  --with-stream_geoip_module=dynamic
- --with-stream_realip_module
+ --with-stream_realip_module 
  --with-stream_ssl_module
  --with-stream_ssl_preread_module
  --with-mail
  --with-mail_ssl_module
  --with-pcre-jit
  --with-threads
- --add-dynamic-module=../njs-${_njs_version}/nginx"
+ --add-dynamic-module=../njs-${_njs_version}/nginx
+ --add-module=../ngx-fancyindex-${_ngx_ver}"
+
 hostmakedepends="geoip geoip-devel openssl-devel pcre2-devel perl libxslt-devel
  which"
 makedepends="${hostmakedepends}"
@@ -57,9 +61,11 @@ maintainer="Duncaen <duncaen@voidlinux.org>"
 license="BSD-2-Clause"
 homepage="https://nginx.org"
 distfiles="https://nginx.org/download/nginx-${version}.tar.gz
+ https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_ngx_ver}/ngx-fancyindex-${_ngx_ver}.tar.xz
  https://hg.nginx.org/nginx-tests/archive/${_tests_commit}.tar.gz
  https://hg.nginx.org/njs/archive/${_njs_version}.tar.gz"
-checksum="9ebb333a9e82b952acd3e2b4aeb1d4ff6406f72491bab6cd9fe69f0dea737f31
+checksum="b33d569a6f11a01433a57ce17e83935e953ad4dc77cdd4d40f896c88ac26eb53
+ 04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656
  e34ef2f38512e1c04ee201c3b68f7ba7ec8f1537dc6a500278bc2219ab435228
  4dac9cbf071e5a7dfe135b4d87e20112d207fcbf5fb620854af8dab44ec3e7bd"
 # Tests fail when nginx run as root and there is no nginx user
@@ -83,6 +89,8 @@ nginx_homedir="/var/lib/nginx"
 make_dirs="/var/log/nginx 0750 root root
  /var/lib/nginx 1777 root root
  /var/lib/nginx/tmp 0750 nginx root"
+
+build_options="geoip stream slice fancyindex"
 
 do_configure() {
 	if [ "$CROSS_BUILD" ]; then
