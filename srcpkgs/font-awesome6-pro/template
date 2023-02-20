@@ -1,0 +1,16 @@
+# Template file for 'font-awesome5-pro'
+pkgname=font-awesome6-pro
+version=6.2
+revision=1
+depends="font-util"
+short_desc="Font Awesome 6 Pro fontpack"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="OFL-1.1"
+homepage="https://fontawesome.com"
+distfiles="https://github.com/misuchiru03/font-awesome6-pro/archive/v${version}.tar.gz"
+checksum=d07801dcb4941258e0adce99dab87970686a68990b77f3d482374f36e2f03798
+font_dirs="/usr/share/fonts/OTF /usr/share/fonts/TTF"
+
+do_install() {
+	install -Dm644 *.otf -t ${DESTDIR}/usr/share/fonts/OTF
+}
