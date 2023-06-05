@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ -r ./conf ] && ./conf
+
+chpst -u _emby:_emby /opt/emby-server/bin/emby-server
