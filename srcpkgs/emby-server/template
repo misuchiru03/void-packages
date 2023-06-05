@@ -1,0 +1,48 @@
+# Template file for 'emby-server'
+pkgname=emby-server
+version=4.7.13.0
+revision=1
+archs="x86_64 armv7l aarch64"
+create_wrksrc=yes
+hostmakedepends="tar xz"
+short_desc="Bring together your videos, music, photos, and live television"
+maintainer="Alex Childs <misuchiru03+github@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://emby.media"
+checksum=de95964faa185782f3dc6df5f8894f02dab631fbd9aec283fb72829617b13cea
+system_accounts="_emby"
+nopie=yes
+noverifyrdeps=yes
+
+case "$XBPS_TARGET_MACHINE" in
+	    x86_64*)
+		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_amd64.deb"
+		checksum="de95964faa185782f3dc6df5f8894f02dab631fbd9aec283fb72829617b13cea"
+		;;
+	armv7*)
+		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_armhf.deb"
+		checksum="0e36792d99e1c88c2dda621a12909b010ed2f823b7f859f0c99157dc272ec6cc"
+		;;
+	aarch64*)
+		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_arm64.deb"
+		checksum="19d801d77746698cbacc43e0efeffc2086a8d6bd2b35c4bf1488c070a0351c1b"
+		;;
+esac
+
+
+make_dirs="/opt/emby-server 0755 _emby _emby"
+make_dirs="/var/lib/emby 0755 _emby _emby"
+
+do_extract() {
+	fn="${distfiles##*/}"
+	ar x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${fn}"
+	tar xf data.tar.xz
+	mkdir -p etc opt usr
+}
+
+do_install() {
+	vcopy etc /
+	vcopy usr /
+	vcopy opt /
+	vsv emby-server
+}
