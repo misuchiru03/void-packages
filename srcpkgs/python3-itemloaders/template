@@ -1,0 +1,20 @@
+# Template file for 'python3-itemloaders'
+pkgname=python3-itemloaders
+version=1.1.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+makedepends="python3-setuptools python3-wheel python3-w3lib python3-parsel
+ python3-jmespath python3-itemadapter"
+depends="python3"
+checkdepends="python3-pytest python3-lxml python3-cssselect ${depends}"
+short_desc="Library to populate items using XPath and CSS with a convenient API"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/scrapy/itemloaders"
+distfiles="${PYPI_SITE}/i/itemloaders/itemloaders-${version}.tar.gz"
+checksum=21d81c61da6a08b48e5996288cdf3031c0f92e5d0075920a0242527523e14a48
+
+post_install() {
+    vlicense LICENSE
+}
