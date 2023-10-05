@@ -1,0 +1,23 @@
+# Template file for 'scrapy'
+pkgname=scrapy
+version=2.11.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+makedepends="python3-Twisted python3-cryptography python3-cssselect python3-openssl
+ python3-service_identity python3-zope.interface python3-packaging python3-lxml
+ python3-setuptools python3-itemloaders python3-itemadapter python3-wheel"
+depends="python3 python3-w3lib python3-parsel python3-PyDispatcher python3-tldextract
+ python3-queuelib"
+checkdepends="python3-pytest ${depends}"
+short_desc="Fast high-level web crawling and scraping framework for Python"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://scrapy.org/"
+changelog="https://raw.githubusercontent.com/scrapy/scrapy/master/docs/news.rst"
+distfiles="${PYPI_SITE}/S/Scrapy/Scrapy-${version}.tar.gz"
+checksum=3cbdedce0c3f0e0482d61be2d7458683be7cd7cf14b0ee6adfbaddb80f5b36a5
+
+post_install() {
+    vlicense LICENSE
+}
