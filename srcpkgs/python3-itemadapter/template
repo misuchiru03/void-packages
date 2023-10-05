@@ -1,0 +1,18 @@
+# Template file for 'python3-itemadapter'
+pkgname=python3-itemadapter
+version=0.8.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+makedepends="python3-setuptools python3-wheel"
+depends="python3"
+short_desc="Common interface for data container classes"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/scrapy/itemadapter"
+distfiles="${PYPI_SITE}/i/itemadapter/itemadapter-${version}.tar.gz"
+checksum=77758485fb0ac10730d4b131363e37d65cb8db2450bfec7a57c3f3271f4a48a9
+
+post_install() {
+    vlicense LICENSE
+}
