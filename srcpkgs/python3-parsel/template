@@ -1,0 +1,25 @@
+# Template file for 'python3-parsel'
+pkgname=python3-parsel
+version=1.8.1
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+makedepends="python3-cssselect python3-jmespath python3-lxml python3-packaging
+ python3-w3lib python3-psutil python3-setuptools python3-wheel"
+depends="python3"
+checkdepends="python3-pytest ${depends}"
+short_desc="Python library to extract data from HTML, JSON, and XML documents"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/scrapy/parsel"
+changelog="https://raw.githubusercontent.com/scrapy/parsel/master/NEWS"
+distfiles="${PYPI_SITE}/p/parsel/parsel-${version}.tar.gz"
+checksum=aff28e68c9b3f1a901db2a4e3f158d8480a38724d7328ee751c1a4e1c1801e39
+
+post_patch() {
+    sed 's/pytest-runner//' -i setup.py # pytest-runner not required to build
+}
+
+post_install() {
+    vlicense LICENSE
+}
