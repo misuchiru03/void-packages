@@ -1,0 +1,18 @@
+# Template file for 'python3-PyDispatcher'
+pkgname=python3-PyDispatcher
+version=2.0.7
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+makedepends="python3-setuptools python3-wheel"
+depends="python3"
+short_desc="Multi-producer multi-consumer in-memory signal dispatch system"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/mcfletch/pydispatcher"
+distfiles="${PYPI_SITE}/P/PyDispatcher/PyDispatcher-${version}.tar.gz"
+checksum=b777c6ad080dc1bad74a4c29d6a46914fa6701ac70f94b0d66fbcfde62f5be31
+
+post_install() {
+    vlicense license.txt
+}
