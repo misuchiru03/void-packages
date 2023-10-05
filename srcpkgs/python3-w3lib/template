@@ -1,0 +1,20 @@
+# Template file for 'python3-w3lib'
+pkgname=python3-w3lib
+version=2.1.2
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+makedepends="python3-setuptools python3-wheel"
+depends="python3"
+checkdepends="python3-pytest ${depends}"
+short_desc="Library of web-related functions for Python"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/scrapy/w3lib"
+changelog="https://raw.githubusercontent.com/scrapy/w3lib/master/NEWS"
+distfiles="${PYPI_SITE}/w/w3lib/w3lib-${version}.tar.gz"
+checksum=ed5b74e997eea2abe3c1321f916e344144ee8e9072a6f33463ee8e57f858a4b1
+
+post_install() {
+    vlicense LICENSE
+}
