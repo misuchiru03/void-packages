@@ -1,0 +1,22 @@
+# Template file for 'python3-keyboard'
+pkgname=python3-keyboard
+version=0.13.5
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-poetry-core python3-setuptools python3-wheel"
+makedepends=""
+depends=""
+short_desc="Hook and simulate keyboard events"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/boppreh/keyboard"
+#changelog=""
+distfiles="${PYPI_SITE}/k/keyboard/keyboard-${version}.zip"
+checksum=63ed83305955939ca5c9a73755e5cc43e8242263f5ad5fd3bb7e0b032f3d308b
