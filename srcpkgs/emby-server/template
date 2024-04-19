@@ -1,6 +1,6 @@
 # Template file for 'emby-server'
 pkgname=emby-server
-version=4.7.14.0
+version=4.8.3.0
 revision=1
 archs="x86_64 armv7l aarch64"
 create_wrksrc=yes
@@ -9,7 +9,7 @@ short_desc="Bring together your videos, music, photos, and live television"
 maintainer="Alex Childs <misuchiru03+github@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://emby.media"
-checksum=
+checksum=90121b571308d8c3b597fe7af09d90712d0c188aa5ae8cf76e400363784bd449
 system_accounts="_emby"
 nopie=yes
 noverifyrdeps=yes
@@ -17,7 +17,7 @@ noverifyrdeps=yes
 case "$XBPS_TARGET_MACHINE" in
 	    x86_64*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_amd64.deb"
-		checksum="5c31d0fc655eba12f319e107ce1d682089e314fecced16e41968155f4146ee12"
+		checksum="90121b571308d8c3b597fe7af09d90712d0c188aa5ae8cf76e400363784bd449"
 		;;
 	armv7*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_armhf.deb"
