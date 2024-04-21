@@ -9,7 +9,7 @@ short_desc="Bring together your videos, music, photos, and live television"
 maintainer="Alex Childs <misuchiru03+github@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://emby.media"
-checksum=90121b571308d8c3b597fe7af09d90712d0c188aa5ae8cf76e400363784bd449
+checksum=b13596a122f583c2e2fa23564706805f1a6fc304a9198fb95f14eede7508a6e6
 system_accounts="_emby"
 nopie=yes
 noverifyrdeps=yes
@@ -17,15 +17,15 @@ noverifyrdeps=yes
 case "$XBPS_TARGET_MACHINE" in
 	    x86_64*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_amd64.deb"
-		checksum="90121b571308d8c3b597fe7af09d90712d0c188aa5ae8cf76e400363784bd449"
+		checksum="b13596a122f583c2e2fa23564706805f1a6fc304a9198fb95f14eede7508a6e6"
 		;;
 	armv7*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_armhf.deb"
-		checksum="f45fcd003d39894d25b3b14b94fddcbd1b2c8ffb796b66ec5270af44d02b86b5"
+		checksum="8634a94fecee9eac48ce98c5135d2fe2954ba42b22ec9c3295eccb8a009b8197"
 		;;
 	aarch64*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_arm64.deb"
-		checksum="014d87410346bf2fb2e19e3923d17232fd1edb42c7f2f2128e7f4514487a0842"
+		checksum="28fdfcca18dff32addbca5527dee3087023ad0316dd0c3d15a6a195dcfad2229"
 		;;
 esac
 
