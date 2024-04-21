@@ -1,6 +1,6 @@
 # Template file for 'emby-server'
 pkgname=emby-server
-version=4.8.3.0
+version=4.8.4.0
 revision=1
 archs="x86_64 armv7l aarch64"
 create_wrksrc=yes
