@@ -1,6 +1,6 @@
 # Template file for 'emby-server'
 pkgname=emby-server
-version=4.8.4.0
+version=4.8.5.0
 revision=1
 archs="x86_64 armv7l aarch64"
 create_wrksrc=yes
@@ -9,7 +9,6 @@ short_desc="Bring together your videos, music, photos, and live television"
 maintainer="Alex Childs <misuchiru03+github@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://emby.media"
-checksum=b13596a122f583c2e2fa23564706805f1a6fc304a9198fb95f14eede7508a6e6
 system_accounts="_emby"
 nopie=yes
 noverifyrdeps=yes
@@ -17,15 +16,15 @@ noverifyrdeps=yes
 case "$XBPS_TARGET_MACHINE" in
 	    x86_64*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_amd64.deb"
-		checksum="b13596a122f583c2e2fa23564706805f1a6fc304a9198fb95f14eede7508a6e6"
+		checksum="dc075d362954be17f233b445ac5b7ba29b5fb4ef5f3248ba30ecba59d825fb63"
 		;;
 	armv7*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_armhf.deb"
-		checksum="8634a94fecee9eac48ce98c5135d2fe2954ba42b22ec9c3295eccb8a009b8197"
+		checksum="2f4876955be03f54438dbf49315305271d716306841add75e183d85bc514e47d"
 		;;
 	aarch64*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_arm64.deb"
-		checksum="28fdfcca18dff32addbca5527dee3087023ad0316dd0c3d15a6a195dcfad2229"
+		checksum="dd4da74c72deff1b7be15bf130a1c8fd72d8be1cf0e3ca55a63fab3e52b9733b"
 		;;
 esac
 
