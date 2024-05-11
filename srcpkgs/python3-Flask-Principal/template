@@ -1,0 +1,22 @@
+# Template file for 'python3-Flask-Principal'
+pkgname=python3-Flask-Principal
+version=0.4.0
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-module
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools"
+makedepends=""
+depends="python3-Flask python3-blinker"
+short_desc="Identity management for flask"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="http://packages.python.org/Flask-Principal/"
+#changelog=""
+distfiles="${PYPI_SITE}/F/Flask-Principal/Flask-Principal-${version}.tar.gz"
+checksum=f5d6134b5caebfdbb86f32d56d18ee44b080876a27269560a96ea35f75c99453
