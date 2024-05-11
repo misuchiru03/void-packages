@@ -1,0 +1,22 @@
+# Template file for 'python3-APScheduler'
+pkgname=python3-APScheduler
+version=3.10.4
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends=""
+depends=""
+short_desc="In-process task scheduler with Cron-like capabilities"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/agronholm/apscheduler"
+#changelog=""
+distfiles="${PYPI_SITE}/A/APScheduler/APScheduler-${version}.tar.gz"
+checksum=e6df071b27d9be898e486bc7940a7be50b4af2e9da7c08f0744a96d4bd4cef4a
