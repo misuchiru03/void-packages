@@ -1,0 +1,23 @@
+# Template file for 'python3-limits'
+pkgname=python3-limits
+version=3.11.0
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools python3-wheel"
+makedepends=""
+depends="python3-deprecated python3-importlib_resources python3-packaging
+ python3-typing_extensions"
+short_desc="Rate limiting utilities"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://limits.readthedocs.org/"
+#changelog=""
+distfiles="${PYPI_SITE}/l/limits/limits-${version}.tar.gz"
+checksum=2ce80fbf245ea737ade6fe1197c9bbdfc49a6e558f1950e5f722734cb275d781
