@@ -1,0 +1,22 @@
+# Template file for 'python3-ordered-set'
+pkgname=python3-ordered-set
+version=4.1.0
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools python3-wheel"
+makedepends="python3-flit_core"
+depends=""
+short_desc="Custom MutableSet that remembered its order"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/rspeer/ordered-set"
+#changelog=""
+distfiles="${PYPI_SITE}/o/ordered-set/ordered-set-${version}.tar.gz"
+checksum=694a8e44c87657c59292ede72891eb91d34131f6531463aab3009191c77364a8
