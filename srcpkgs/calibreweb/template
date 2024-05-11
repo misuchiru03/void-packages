@@ -4,17 +4,18 @@ version=0.6.21
 revision=1
 #wrksrc=
 #create_wrksrc=yes
-build_style=python3-module
+build_style=python3-pep517
 #configure_args=""
 #make_build_args=""
 #make_install_args=""
 #conf_files=""
 #make_dirs="/var/log/dir 0755 root root"
-hostmakedepends="python3-setuptools"
+hostmakedepends="python3-setuptools python3-wheel"
 makedepends=""
 depends="calibre python3-Babel python3-Flask python3-Flask-Babel python3-Flask-Login
  python3-iso8601 python3-pytz python3-requests python3-SQLAlchemy python3-tornado
- python3-Unidecode python3-lxml python3-Flask-WTF python3-chardet"
+ python3-Unidecode python3-lxml python3-Flask-WTF python3-chardet
+ python3-Flask-Limiter python3-Flask-Principal python3-APScheduler python3-pycountry"
 short_desc="Web app providing a clean interface Calibre database browsing"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-3.0-or-later"
