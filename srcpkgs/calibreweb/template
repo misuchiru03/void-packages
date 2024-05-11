@@ -1,6 +1,6 @@
 # Template file for 'calibreweb'
 pkgname=calibreweb
-version=0.6.19
+version=0.6.21
 revision=1
 #wrksrc=
 #create_wrksrc=yes
@@ -21,4 +21,4 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/janeczku/calibre-web"
 #changelog=""
 distfiles="${PYPI_SITE}/c/calibreweb/calibreweb-${version}.tar.gz"
-checksum=38e2d0081f2606676195ee9bd61ceed7dca51cfb3784c1dfc0a45a34ae7e9763
+checksum=a8d7ec2a646a8488f387a7bc15bfdb06e8b8a7e66a508f1478e1af630a10818c
