@@ -1,0 +1,7 @@
+#!/bin/sh
+
+exec 2>&1 chpst -u _jellyfin:_jellyfin /usr/bin/jellyfin \
+	-l /var/log/jellyfin \
+	-d /usr/lib/jellyfin/data \
+	-C /var/cache/jellyfin \
+	-c /usr/lib/jellyfin/config \
