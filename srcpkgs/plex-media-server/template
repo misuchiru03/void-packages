@@ -1,8 +1,8 @@
 # Template file for 'plex-media-server'
 pkgname=plex-media-server
-version=1.40.2.8395
+version=1.40.3.8555
 revision=1
-_suffix=c67dce28e
+_suffix=fef15d30c
 archs="i686 x86_64 armv7 aarch64"
 create_wrksrc=yes
 hostmakedepends="tar xz"
@@ -23,19 +23,19 @@ noverifyrdeps=yes
 case "$XBPS_TARGET_MACHINE" in
 		i686*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_i386.deb"
-			checksum="140c2c5ce2109c8a8d76b1cf63ab184c291ba2565ab947bbe1e8ea1575355856"
+			checksum="0d4535b27f4ffb56508c2698be08ab3072fbf8bc50e606177000c93a9fe74fdd"
 			;;
 		x86_64*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_amd64.deb"
-			checksum="8184614087fa45a5e01536a28055b5c89ee777146638fea8252367afca341013"
+			checksum="989647bcad9d11a7839a60f08a6067eb4e94afcf723ecfe98adcee4c554f4b54"
 			;;
 		armv7*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_armhf.deb"
-			checksum="0fb87f49f8551f379017261ae64f6eb8a85cbddbf9fff3cdb363452cdf6fca44"
+			checksum="d9d9472e42409f0486babbc7bed104a670581ee733dee24530cfe657da0d33f7"
 			;;
 		aarch64*)
 			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_arm64.deb"
-			checksum="649a9b13da607e5a85563883a82103e8ae4a064e8a1d26e4210965174ea32554"
+			checksum="9c5352d63be82bd878504da98857de2a2604faa2e48cb5e7aee53544622b816c"
 			;;
 esac
 
