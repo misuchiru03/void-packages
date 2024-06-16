@@ -3,10 +3,19 @@
 # Consider using mime.types from mime-types package
 # See comments in mime-types template
 pkgname=nginx
+<<<<<<< HEAD
 version=1.26.1
 revision=1
 _tests_commit=88730862618b
 _njs_version=0.8.4
+=======
+version=1.25.3
+revision=11
+_ngx_ver=0.5.2
+_ngx_commit=6cdffdb
+_tests_commit=36a4563f7f00
+_njs_version=0.7.12
+>>>>>>> 265e2c6012f (nginx: update with fancyindex to 1.25.3)
 create_wrksrc=yes
 build_wrksrc="nginx-${version}"
 build_style=gnu-makefile
@@ -53,7 +62,8 @@ configure_args="--prefix=${_cfgdir}
  --with-mail_ssl_module
  --with-pcre-jit
  --with-threads
- --add-dynamic-module=../njs-${_njs_version}/nginx"
+ --add-dynamic-module=../njs-${_njs_version}/nginx
+ --add-dynamic-module=../ngx-fancyindex-${_ngx_ver}"
 hostmakedepends="geoip geoip-devel openssl-devel pcre2-devel perl libxslt-devel
  which"
 makedepends="${hostmakedepends}"
@@ -64,11 +74,19 @@ license="BSD-2-Clause"
 homepage="https://nginx.org"
 changelog="https://nginx.org/en/CHANGES-${version%.*}"
 distfiles="https://nginx.org/download/nginx-${version}.tar.gz
+ https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_ngx_ver}/ngx-fancyindex-${_ngx_ver}.tar.xz
  https://hg.nginx.org/nginx-tests/archive/${_tests_commit}.tar.gz
  https://hg.nginx.org/njs/archive/${_njs_version}.tar.gz"
+<<<<<<< HEAD
 checksum="f9187468ff2eb159260bfd53867c25ff8e334726237acf227b9e870e53d3e36b
  6cc1e4b393c4d05cef06ac16f4a38d504d0e5674fca08c7be20052fd3b07b322
  8191bff8491af9169a92e30e383ef8614717b0c6d40913d83b95051031e92321"
+=======
+checksum="64c5b975ca287939e828303fa857d22f142b251f17808dfe41733512d9cded86
+ 04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656
+ a90641a75314427b6c02e3a5e811c66d6fe7c0cad93752a6a2725d0129e08fbf
+ af648336c236f625311edcd90b83f37702fadad160c2a5ed57b34656609e918a"
+>>>>>>> 265e2c6012f (nginx: update with fancyindex to 1.25.3)
 # Tests fail when nginx run as root and there is no nginx user
 make_check=ci-skip
 
@@ -227,5 +245,13 @@ nginx-mod-stream-geoip_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
 	pkg_install() {
 		vmove usr/lib/nginx/modules/ngx_stream_geoip_module.so
+	}
+}
+
+nginx-mod-fancyindex_package() {
+	short_desc+=" - Fancy Index module"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/lib/nginx/modules/ngx_http_fancyindex_module.so
 	}
 }
