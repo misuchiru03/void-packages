@@ -1,6 +1,6 @@
 # Template file for 'jellyfin-bin'
 pkgname=jellyfin-bin
-version=10.9.1
+version=10.9.6
 revision=1
 archs="x86_64"
 short_desc="Free software media system"
@@ -8,7 +8,7 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-2.0"
 homepage="https://jellyfin.org"
 distfiles="https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_${version}-amd64.tar.gz"
-checksum=5250133a669a6c9c06d65cf468fa7f6aa22c2f8d8e1dbd4c63f3af1e646fa103
+checksum=2fa561c27f16b602164adad05d13585dc2edf19b027958010b27b05e3dbea997
 
 system_accounts="_jellyfin _jellyfin"
 
