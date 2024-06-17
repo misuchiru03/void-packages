@@ -1,6 +1,6 @@
 # Template file for 'emby-server'
 pkgname=emby-server
-version=4.8.6.0
+version=4.8.8.0
 revision=1
 archs="x86_64 armv7l aarch64"
 create_wrksrc=yes
@@ -16,7 +16,7 @@ noverifyrdeps=yes
 case "$XBPS_TARGET_MACHINE" in
 	    x86_64*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_amd64.deb"
-		checksum="9a219ec2b54669eb9c49582728da7b8f7279447946d07a297503302937e0bede"
+		checksum="707e50e47b0cf7c8c2c36244e45b64f6e38c3488ed4d4e592d2afb75298e353c"
 		;;
 	armv7*)
 		distfiles="https://github.com/MediaBrowser/Emby.Releases/releases/download/${version}/emby-server-deb_${version}_armhf.deb"
