@@ -1,6 +1,6 @@
 # Template file for 'nodejs'
 pkgname=nodejs
-version=18.19.1
+version=20.14.0
 revision=1
 hostmakedepends="which pkg-config python3-setuptools"
 _make_depends="zlib-devel $(vopt_if icu icu-devel)
@@ -15,8 +15,8 @@ license="MIT"
 homepage="https://nodejs.org/"
 changelog="https://raw.githubusercontent.com/nodejs/node/main/doc/changelogs/CHANGELOG_V${version%%.*}.md"
 distfiles="https://nodejs.org/dist/v${version}/node-v${version}.tar.xz"
-checksum=090f96a2ecde080b6b382c6d642bca5d0be4702a78cb555be7bf02b20bd16ded
-python_version=3
+checksum=08655028f0d8436e88163f9186044d635d3f36a85ee528f36bd05b6c5e46c1bb
+#python_version=3
 
 build_options="ssl libuv icu nghttp2 cares brotli"
 desc_option_ssl="Enable shared openssl"
@@ -47,7 +47,7 @@ fi
 
 case "$XBPS_TARGET_MACHINE" in
 	ppc64*) ;;
-	ppc*) broken="Node 18.x does not support 32-bit ppc" ;;
+	ppc*) broken="Node 20.x does not support 32-bit ppc" ;;
 esac
 
 CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
