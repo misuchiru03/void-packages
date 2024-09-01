@@ -1,0 +1,48 @@
+# Template file for 'audiobookshelf'
+pkgname=audiobookshelf
+version=2.13.2
+revision=1
+archs="x86_64"
+makedepends="nodejs-lts"
+short_desc="Self-hosted audiobook and podcast server"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://www.audiobookshelf.org"
+distfiles="https://github.com/advplyr/audiobookshelf/archive/refs/tags/v${version}.tar.gz"
+checksum=f1872c60120f67c4bc979fcd6f3e5463d1d5519a774fefa9e59b2734fa265a0f
+
+nopie=yes
+#nopie_files="var/audiobookshelf/audiobookshelf"
+
+system_accounts="_audiobookshelf"
+make_dirs="/var/audiobookshelf 0755 _audiobookshelf _audiobookshelf"
+_audiobookshelf_homedir="/var/audiobookshelf"
+
+pre_build() {
+        # install build dependencies
+        npm install @yao-pkg/pkg
+	npm install ripstat
+}
+
+do_build() {
+        cd client
+        rm -rf node_modules
+        npm ci --unsafe-perm=true --allow-root
+        NODE_OPTIONS=--openssl-legacy-provider npm run generate
+        cd ..
+
+        rm -rf node_modules
+        npm ci --unsafe-perm=true --allow-root
+
+	node_modules/.bin/pkg -t node20-linux-x64 -o "var/audiobookshelf/audiobookshelf" .
+}
+
+do_install() {
+	vmkdir var/audiobookshelf
+	vcopy var/audiobookshelf/audiobookshelf var/audiobookshelf
+
+	vsv audiobookshelf
+
+	vmkdir usr/bin
+	ln -s /var/audiobookshelf/audiobookshelf "${DESTDIR}"/usr/bin/audiobookshelf
+}
