@@ -1,6 +1,7 @@
 #!/bin/sh
 
+BIN=/usr/bin/
 HOME=/var/audiobookshelf
 
 set -e
-exec 2>&1 chpst -u _audiobookshelf ${HOME}/audiobookshelf -p 3333 -c ${HOME}/config -m ${HOME}/metadata
+exec 2>&1 chpst -u _audiobookshelf node ${BIN}/audiobookshelf -p 3333 -c ${HOME}/config -m ${HOME}/metadata
