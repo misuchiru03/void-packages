@@ -1,6 +1,6 @@
 # Template file for 'audiobookshelf'
 pkgname=audiobookshelf
-version=2.17.7
+version=2.19.0
 revision=1
 archs="x86_64"
 makedepends="nodejs-lts"
@@ -9,7 +9,7 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://www.audiobookshelf.org"
 distfiles="https://github.com/advplyr/audiobookshelf/archive/refs/tags/v${version}.tar.gz"
-checksum=f889909ecd2324fa355ccc02b72c21da592afa07c70f56b82c2da9cff72993ad
+checksum=8f68d042cdff1c186c3c068869b87328a5ff68f7efda334a08699726256c8f2a
 
 system_accounts="_audiobookshelf"
 make_dirs="/var/audiobookshelf 0755 _audiobookshelf _audiobookshelf"
@@ -19,29 +19,22 @@ nopie=yes
 
 pre_build() {
         # install build dependencies
-        npm install @yao-pkg/pkg
+#        npm install @yao-pkg/pkg
 	npm install ripstat
 }
 
 do_build() {
-        cd client
-        rm -rf node_modules
-        npm ci --unsafe-perm=true --allow-root
-        NODE_OPTIONS=--openssl-legacy-provider npm run generate
-        cd ..
-
-        rm -rf node_modules
-        npm ci --unsafe-perm=true --allow-root
-
-	node_modules/.bin/pkg -t node20-linux-x64 -o "var/audiobookshelf/audiobookshelf" .
+        npm run client
+	npm ci --only=production
+	find {client/dist,node_modules,server} -type f -name "*.map" | xargs rm -rf
+	sed -i '1i #!/usr/bin/node\n' index.js
 }
 
 do_install() {
-	vmkdir var/audiobookshelf
-	vcopy var/audiobookshelf/audiobookshelf var/audiobookshelf
-
-	vsv audiobookshelf
-
-	vmkdir usr/bin
-	ln -s /var/audiobookshelf/audiobookshelf "${DESTDIR}"/usr/bin/audiobookshelf
+	install -Dm644 *.json -t "${DESTDIR}/usr/lib/audiobookshelf"
+	install -Dm755 index.js -t "${DESTDIR}/usr/lib/audiobookshelf"
+	mv node_modules "${DESTDIR}/usr/lib/audiobookshelf"
+	find {client/dist,server} -type f | xargs -I {} install -Dm644 {} "${DESTDIR}/usr/lib/audiobookshelf/"{}
+	install -dm755 "${DESTDIR}/usr/bin"
+	ln -s "/usr/lib/audiobookshelf/index.js" "${DESTDIR}/usr/bin/audiobookshelf"
 }
