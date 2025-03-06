@@ -1,6 +1,6 @@
 # Template file for 'audiobookshelf'
 pkgname=audiobookshelf
-version=2.19.0
+version=2.19.5
 revision=1
 archs="x86_64"
 makedepends="nodejs-lts"
@@ -9,7 +9,7 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://www.audiobookshelf.org"
 distfiles="https://github.com/advplyr/audiobookshelf/archive/refs/tags/v${version}.tar.gz"
-checksum=8f68d042cdff1c186c3c068869b87328a5ff68f7efda334a08699726256c8f2a
+checksum=a298570185ad69c4a36be9f066103965ed672e86a6c406cf8118543073768061
 
 system_accounts="_audiobookshelf"
 make_dirs="/var/audiobookshelf 0755 _audiobookshelf _audiobookshelf"
