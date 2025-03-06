@@ -1,0 +1,11 @@
+--- a/index.js
++++ b/index.js
+@@ -39,7 +39,7 @@
+ const HOST = options.host || process.env.HOST
+ const CONFIG_PATH = inputConfig || process.env.CONFIG_PATH || Path.resolve('config')
+ const METADATA_PATH = inputMetadata || process.env.METADATA_PATH || Path.resolve('metadata')
+-const SOURCE = options.source || process.env.SOURCE || 'debian'
++const SOURCE = options.source || process.env.SOURCE || 'void'
+ 
+ const ROUTER_BASE_PATH = process.env.ROUTER_BASE_PATH ?? '/audiobookshelf'
+
