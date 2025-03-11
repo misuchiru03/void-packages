@@ -1,0 +1,22 @@
+# Template file for 'python3-hatchling'
+pkgname=python3-hatchling
+version=1.27.0
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends="python3-pluggy python3-trove-classifiers python3-pathspec"
+depends="python3-packaging python3-pathspec python3-pluggy python3-trove-classifiers"
+short_desc="Modern, extensible Python build backend"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://hatch.pypa.io/latest/"
+#changelog=""
+distfiles="${PYPI_SITE}/h/hatchling/hatchling-${version}.tar.gz"
+checksum=971c296d9819abb3811112fc52c7a9751c8d381898f36533bb16f9791e941fd6
