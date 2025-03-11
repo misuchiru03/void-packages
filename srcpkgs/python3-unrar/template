@@ -1,0 +1,22 @@
+# Template file for 'python3-unrar'
+pkgname=python3-unrar
+version=0.4
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends=""
+depends=""
+short_desc="Work with RAR archive files through unrar library using ctypes."
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="http://github.com/matiasb/python-unrar"
+#changelog=""
+distfiles="${PYPI_SITE}/u/unrar/unrar-${version}.tar.gz"
+checksum=b24447a5b93024be600ef8255668ba23a30f451176577b691559ea1359f7d164
