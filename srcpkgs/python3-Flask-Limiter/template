@@ -1,6 +1,6 @@
 # Template file for 'python3-Flask-Limiter'
 pkgname=python3-Flask-Limiter
-version=3.6.0
+version=3.10.1
 revision=1
 #archs="i686 x86_64"
 #build_wrksrc=
@@ -20,4 +20,4 @@ license="MIT"
 homepage="https://flask-limiter.readthedocs.org/"
 #changelog=""
 distfiles="${PYPI_SITE}/F/Flask-Limiter/flask_limiter-${version}.tar.gz"
-checksum=89e663cc8372fa5de5d6f965c5224720c2db5345668961a7076f15666e3213fb
+checksum=5ff8395f2acbc565ba6af43dc4b9c5b0a3665989681791d01dfaa6388bb332c6
