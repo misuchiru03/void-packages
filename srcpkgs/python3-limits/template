@@ -1,6 +1,6 @@
 # Template file for 'python3-limits'
 pkgname=python3-limits
-version=3.11.0
+version=4.1
 revision=1
 #archs="i686 x86_64"
 #build_wrksrc=
@@ -20,4 +20,4 @@ license="MIT"
 homepage="https://limits.readthedocs.org/"
 #changelog=""
 distfiles="${PYPI_SITE}/l/limits/limits-${version}.tar.gz"
-checksum=2ce80fbf245ea737ade6fe1197c9bbdfc49a6e558f1950e5f722734cb275d781
+checksum=37cc10697b33b8015964c0d0ef558889cd8752b457ad6f402bf72e4eef0578a9
