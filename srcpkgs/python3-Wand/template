@@ -1,0 +1,22 @@
+# Template file for 'python3-Wand'
+pkgname=python3-Wand
+version=0.6.13
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends=""
+depends=""
+short_desc="Ctypes-based simple ImageMagick binding for Python."
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://pypi.org/project/Wand"
+#changelog=""
+distfiles="${PYPI_SITE}/W/Wand/Wand-${version}.tar.gz"
+checksum=f5013484eaf7a20eb22d1821aaefe60b50cc329722372b5f8565d46d4aaafcca
