@@ -1,0 +1,24 @@
+# Template file for 'python3-ebook-converter'
+pkgname=python3-ebook-converter
+version=4.12.2
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends=""
+depends="python3-BeautifulSoup4 python3-css-parser python3-filelock python3-html2text
+ python3-html5-parser python3-lxml python3-msgpack python3-Pillow python3-dateutil
+ python3-setuptools python3-tinycss python3-odfpy"
+short_desc="Convert ebook between different formats"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/gryf/ebook-converter"
+#changelog=""
+distfiles="${PYPI_SITE}/e/ebook-converter-noimage/ebook-converter-noimage-${version}.tar.gz"
+checksum=8e7ed8e1bf602a6c5ae102d5529d89e37eb3340cede2179e5eca70c5c917606a
