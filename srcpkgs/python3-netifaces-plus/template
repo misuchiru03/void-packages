@@ -1,0 +1,22 @@
+# Template file for 'python3-netifaces-plus'
+pkgname=python3-netifaces-plus
+version=0.12.4
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends="python3-devel"
+depends=""
+short_desc="Portable network interface information"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/tsukumijima/netifaces-plus"
+#changelog=""
+distfiles="${PYPI_SITE}/n/netifaces_plus/netifaces_plus-${version}.tar.gz"
+checksum=ef9634e83572b41655a3512ef3eaa936c2a9c2bbefc66bfe03db898e19d73895
