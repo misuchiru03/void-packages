@@ -1,24 +1,30 @@
 # Template file for 'calibreweb'
 pkgname=calibreweb
-version=0.6.21
+version=0.6.24
 revision=1
 #wrksrc=
 #create_wrksrc=yes
-build_style=python3-module
+build_style=python3-pep517
 #configure_args=""
 #make_build_args=""
 #make_install_args=""
 #conf_files=""
 #make_dirs="/var/log/dir 0755 root root"
-hostmakedepends="python3-setuptools"
-makedepends=""
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends="python3-unrar python3-odfpy python3-ebook-converter"
 depends="calibre python3-Babel python3-Flask python3-Flask-Babel python3-Flask-Login
- python3-iso8601 python3-pytz python3-requests python3-SQLAlchemy python3-tornado
- python3-Unidecode python3-lxml python3-Flask-WTF python3-chardet"
+ python3-iso8601 python3-pytz python3-requests python3-SQLAlchemy2 python3-tornado
+ python3-Unidecode python3-lxml python3-Flask-WTF python3-chardet
+ python3-Flask-Limiter python3-Flask-Principal python3-APScheduler python3-pycountry
+ python3-ordered-set python3-limits python3-importlib_resources python3-Wand
+ python3-netifaces-plus python3-magic python3-limits python3-bleach
+ python3-Werkzeug python3-pypdf python3-iso-639 python3-hatchling
+ python3-cryptography python3-Flask-HTTPAuth python3-regex python3-urllib3
+ python3-unrar python3-odfpy python3-ebook-converter"
 short_desc="Web app providing a clean interface Calibre database browsing"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/janeczku/calibre-web"
 #changelog=""
 distfiles="${PYPI_SITE}/c/calibreweb/calibreweb-${version}.tar.gz"
-checksum=a8d7ec2a646a8488f387a7bc15bfdb06e8b8a7e66a508f1478e1af630a10818c
+checksum=883c956ceb93a9bfa758428904d4122e64a1cf4778e5b6df14b8e50f465b6f9e
