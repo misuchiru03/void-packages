@@ -1,0 +1,22 @@
+# Template file for 'python3-hatch-vcs'
+pkgname=python3-hatch-vcs
+version=0.4.0
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=python3-pep517
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="python3-setuptools_scm python3-wheel"
+makedepends="python3-hatchling"
+depends="hatchling python3-setuptools_scm"
+short_desc="Hatch plugin for versioning with your preferred VCS"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://pypi.org/project/hatch-vcs/"
+#changelog=""
+distfiles="${PYPI_SITE}/h/hatch-vcs/hatch_vcs-${version}.tar.gz"
+checksum=093810748fe01db0d451fabcf2c1ac2688caefd232d4ede967090b1c1b07d9f7
