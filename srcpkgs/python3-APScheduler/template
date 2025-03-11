@@ -1,6 +1,6 @@
 # Template file for 'python3-APScheduler'
 pkgname=python3-APScheduler
-version=3.10.4
+version=3.11.0
 revision=1
 #archs="i686 x86_64"
 #build_wrksrc=
@@ -18,5 +18,5 @@ maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="MIT"
 homepage="https://github.com/agronholm/apscheduler"
 #changelog=""
-distfiles="${PYPI_SITE}/A/APScheduler/APScheduler-${version}.tar.gz"
-checksum=e6df071b27d9be898e486bc7940a7be50b4af2e9da7c08f0744a96d4bd4cef4a
+distfiles="${PYPI_SITE}/a/apscheduler/apscheduler-${version}.tar.gz"
+checksum=4c622d250b0955a65d5d0eb91c33e6d43fd879834bf541e0a18661ae60460133
