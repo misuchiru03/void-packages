@@ -1,7 +1,7 @@
 # Template file for 'certbot-apache'
 pkgname=certbot-apache
-version=2.10.0
-revision=2
+version=3.0.1
+revision=1
 build_style=python3-pep517
 hostmakedepends="python3-poetry-core python3-setuptools python3-wheel"
 depends="certbot python3-acme python3-augeas python3-zope.interface"
@@ -10,5 +10,5 @@ short_desc="Let's Encrypt certificate renewal automation utility - Apache plugin
 maintainer="Kartik S. <kartik.ynwa@gmail.com>"
 license="Apache-2.0"
 homepage="https://certbot.eff.org/"
-distfiles="${PYPI_SITE}/c/certbot-apache/certbot-apache-${version}.tar.gz"
-checksum=c7a46ff67eac2834a3e3b975e7a1d1bc7a7be889f51c2cdc87825abd5ccc825a
+distfiles="${PYPI_SITE}/c/certbot-apache/certbot_apache-${version}.tar.gz"
+checksum=83af7dfc1bff6149e810426038bb81ad2b8b4261b3d8b969c8be8321fba24df4
