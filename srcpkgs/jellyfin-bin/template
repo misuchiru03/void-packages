@@ -11,6 +11,7 @@ distfiles="https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jell
 checksum=1893ab906425870a85533dcebcd341bec212a8f9ecd8ab7f55d39d8e1ca579ea
 
 system_accounts="_jellyfin _jellyfin"
+_jellyfin_homedir="/usr/lib/jellyfin"
 
 make_dirs="
  /var/log/jellyfin 0755 _jellyfin _jellyfin
