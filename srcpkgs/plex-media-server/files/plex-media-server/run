@@ -2,4 +2,5 @@
 
 [ -r ./conf ] && ./conf
 
-chpst -u _plex:_plex start_pms
+exec 2>&1
+exec chpst -u _plex:_plex start_pms
