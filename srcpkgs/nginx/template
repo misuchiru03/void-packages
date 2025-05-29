@@ -4,9 +4,11 @@
 # See comments in mime-types template
 pkgname=nginx
 version=1.28.0
-revision=1
+revision=2
 _tests_commit=898407c62387
 _njs_version=0.8.10
+_ngx_ver=0.5.2
+_ngx_commit=6cdffdb
 create_wrksrc=yes
 build_wrksrc="nginx-${version}"
 build_style=gnu-makefile
@@ -53,7 +55,8 @@ configure_args="--prefix=${_cfgdir}
  --with-mail_ssl_module
  --with-pcre-jit
  --with-threads
- --add-dynamic-module=../njs-${_njs_version}/nginx"
+ --add-dynamic-module=../njs-${_njs_version}/nginx
+ --add-dynamic-module=../ngx-fancyindex-${_ngx_ver}"
 hostmakedepends="geoip geoip-devel openssl-devel pcre2-devel perl libxslt-devel
  which"
 makedepends="${hostmakedepends}"
@@ -64,9 +67,11 @@ license="BSD-2-Clause"
 homepage="https://nginx.org"
 changelog="https://nginx.org/en/CHANGES-${version%.*}"
 distfiles="https://nginx.org/download/nginx-${version}.tar.gz
+ https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_ngx_ver}/ngx-fancyindex-${_ngx_ver}.tar.xz
  https://hg.nginx.org/nginx-tests/archive/${_tests_commit}.tar.gz
  https://github.com/nginx/njs/archive/refs/tags/${_njs_version}.tar.gz"
 checksum="c6b5c6b086c0df9d3ca3ff5e084c1d0ef909e6038279c71c1c3e985f576ff76a
+ 04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656
  8969d009261523584858e6fd8976ed784c89d6e95e8d667a8416573e89d87627
  0be4bdd79184cd43f55a0377e59107fddfeef33e54f97c890894f0fe72628d26"
 # Tests fail when nginx run as root and there is no nginx user
@@ -227,5 +232,13 @@ nginx-mod-stream-geoip_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
 	pkg_install() {
 		vmove usr/lib/nginx/modules/ngx_stream_geoip_module.so
+	}
+}
+
+nginx-mod-fancyindex_package() {
+	short_desc+=" - Fancy Index module"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/lib/nginx/modules/ngx_http_fancyindex_module.so
 	}
 }
