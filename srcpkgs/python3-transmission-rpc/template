@@ -1,0 +1,17 @@
+# Template file for 'python3-transmission-rpc'
+pkgname=python3-transmission-rpc
+version=7.0.11
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools python3-wheel"
+depends="python3-requests python3-typing_extensions"
+short_desc="Python wrapper on top of transmssion JSON RPC protocol"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/Trim21/transmission-rpc"
+distfiles="${PYPI_SITE}/t/transmission-rpc/transmission_rpc-${version}.tar.gz"
+checksum=5872322e60b42e368bc9c4724773aea4593113cb19bd2da589f0ffcdabe57963
+
+post_install() {
+	vlicense LICENSE
+}
