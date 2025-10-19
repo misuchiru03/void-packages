@@ -1,7 +1,7 @@
 # Template file for 'metasploit-framework'
 pkgname=metasploit-framework
-_date=20230309
-version=6.3.6
+_date=20251018
+version=6.4.95
 revision=1
 archs="x86_64 i686 aarch64 armv7l armv7hf"
 hostmakedepends="tar"
@@ -11,30 +11,43 @@ license="BSD-3-Clause"
 homepage="https://rapid7.com"
 python_version="2"
 
+
 if [ "$XBPS_TARGET_MACHINE" == "i686" ]; then
-	version=6.3.6
-	_timestamp=20230309112751
+	version=6.4.95
+	_timestamp=20251018055703
 	_arch="i386"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=e01f1b1463d3ac63cec781f219701030f85a31fdbc1ff659cf17f65a0ec65a32
-elif [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
-	version=6.3.6
-	_timestamp=20230309112624
+	distfiles="https://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=d95ef8f123f0c04f93a49f01315abd6cea8b045026fcbbbe7f1c7bf3794cdeec
+fi
+
+if [ "$XBPS_TARGET_MACHINE" == "x86_64" ]; then
+	version=6.4.95
+	_timestamp=20251018055755
 	_arch="amd64"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=6c307d1b93cddf3a98dab5c80779dd9a6d2bf7fe3d86c3f0beb3b79c66894f87
-elif [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
-	version=6.3.6
-	_timestamp=20230309103441
+	distfiles="https://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=24cbc3af1948f40754964d0a06f5cc6535f0206ecd163def79dd0582060fc62b
+fi
+
+if [ "$XBPS_TARGET_MACHINE" == "aarch64" ]; then
+	version=6.4.95
+	_timestamp=20251018060852
 	_arch="arm64"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=33524a6a53f097a64135420f52b0df7d11e818299c2bbe42a2198ee4c217d5da
-elif [ "$XBPS_TARGET_MACHINE" == "armv7hf" ] || [ "$XBPS_TARGET_MACHINE" == "armv7l" ]; then
-	version=6.3.6
-	_timestamp=20230307104040
+	distfiles="https://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=85be39d41e00a77125cc6716ab4637e3f290de6aa8aa3b3263a8535849e5cef2
+fi
+
+if [ "$XBPS_TARGET_MACHINE" == "armv7hf" ]; then
+	version=6.4.95
+	_timestamp=20251018060141
 	_arch="armhf"
-	distfiles="http://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}+${_timestamp}~1rapid7-1_${_arch}.deb"
-	checksum=0909be04e1fc8f0a092cc1acffa2a8cfef23c29f31ccfc40f8f9f9c9278c01a4
+	distfiles="https://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=531baaf72c2059dba8b66f969ba31b6c359090bffb0d9161df0ecc3dbeeadd36
+elif [ "$XBPS_TARGET_MACHINE" == "armv7l" ];              then
+	version=6.4.95
+	_timestamp=20251018060141
+	_arch="armhf"
+	distfiles="https://downloads.metasploit.com/data/releases/metasploit-framework/apt/pool/main/m/metasploit-framework/metasploit-framework_${version}~${_timestamp}~1rapid7-1_${_arch}.deb"
+	checksum=531baaf72c2059dba8b66f969ba31b6c359090bffb0d9161df0ecc3dbeeadd36
 fi
 
 nopie=yes
@@ -42,7 +55,7 @@ nostrip=yes
 noverifyrdeps=yes
 
 do_extract() {
-	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}+${_timestamp}${_gitinfo}~1rapid7-1_${_arch}.deb
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}~${_timestamp}${_gitinfo}~1rapid7-1_${_arch}.deb
 	tar xf data.tar.gz
 	rm -f opt/metasploit-framework/bin/msfupdate
 }
@@ -57,3 +70,4 @@ do_install() {
 post_install() {
 	vlicense opt/metasploit-framework/LICENSE
 }
+
