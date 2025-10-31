@@ -1,0 +1,20 @@
+# Template file for 'beelzebub'
+pkgname=beelzebub
+version=3.5.0
+revision=1
+build_style=go
+go_import_path="github.com/mariocandela/beelzebub/v3"
+hostmakedepends="pkg-config git"
+short_desc="Secure low code honeypot framework with AI"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://beelzebub.ai/"
+distfiles="https://github.com/mariocandela/beelzebub/archive/v${version}.tar.gz"
+checksum=df04d90fda265cba1251f2ee400a854341af6857503cc6edcca532de88127649
+make_dirs="/var/log/beelzebub 0755 root root"
+
+post_install() {
+	vmkdir etc/beelzebub
+	vcopy configurations etc/beelzebub/
+	vsv beelzebub
+}

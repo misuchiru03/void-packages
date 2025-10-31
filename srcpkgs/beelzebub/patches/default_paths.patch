@@ -1,0 +1,66 @@
+--- a/main.go
++++ b/main.go
+@@ -18,8 +18,8 @@
+ 		memLimitMiB                     int
+ 	)
+ 
+-	flag.StringVar(&configurationsCorePath, "confCore", "./configurations/beelzebub.yaml", "Provide the path of configurations core")
+-	flag.StringVar(&configurationsServicesDirectory, "confServices", "./configurations/services/", "Directory config services")
++	flag.StringVar(&configurationsCorePath, "confCore", "/etc/beelzebub/configurations/beelzebub.yaml", "Provide the path of configurations core")
++	flag.StringVar(&configurationsServicesDirectory, "confServices", "/etc/beelzebub/configurations/services/", "Directory config services")
+ 	flag.IntVar(&memLimitMiB, "memLimitMiB", 100, "Process Memory in MiB (default 100, set to -1 to use system default)")
+ 	flag.Parse()
+ 
+--- a/beelzebub-chart/values.yaml
++++ b/beelzebub-chart/values.yaml
+@@ -13,7 +13,7 @@
+         debug: false
+         debugReportCaller: false
+         logDisableTimestamp: true
+-        logsPath: ./logs
++        logsPath: /var/log/beelzebub/logs
+       tracings:
+         rabbit-mq:
+           enabled: false
+
+
+--- a/configurations/beelzebub.yaml
++++ b/configurations/beelzebub.yaml
+@@ -3,7 +3,7 @@
+     debug: false
+     debugReportCaller: false
+     logDisableTimestamp: true
+-    logsPath: ./logs
++    logsPath: /var/log/beelzebub/logs
+   tracings:
+     rabbit-mq:
+       enabled: false
+
+
+--- a/integration_test/configurations/beelzebub.yaml
++++ b/integration_test/configurations/beelzebub.yaml
+@@ -3,10 +3,10 @@
+     debug: false
+     debugReportCaller: false
+     logDisableTimestamp: true
+-    logsPath: ./logs
++    logsPath: /var/log/beelzebub/logs
+   tracings:
+     rabbit-mq:
+       enabled: true
+       uri: "amqp://integration:integration@localhost:5672/"
+   prometheus:
+     path: "/metrics"
+
+
+--- a/parser/configurations_parser_test.go
++++ b/parser/configurations_parser_test.go
+@@ -16,7 +16,7 @@
+     debug: false
+     debugReportCaller: false
+     logDisableTimestamp: true
+-    logsPath: ./logs
++    logsPath: /var/log/beelzebub/logs
+   tracings:
+     rabbit-mq:
+       enabled: true
