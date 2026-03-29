@@ -1,8 +1,8 @@
 # Template file for 'plex-media-server'
 pkgname=plex-media-server
-version=1.43.0.10231
+version=1.43.1.10540
 revision=1
-_suffix=ca3956848
+_suffix=3972d551c
 archs="i686 x86_64 armv7 aarch64"
 create_wrksrc=yes
 hostmakedepends="tar xz"
@@ -21,22 +21,22 @@ noverifyrdeps=yes
 # See https://support.plex.tv/articles/categories/plex-media-server/
 
 case "$XBPS_TARGET_MACHINE" in
-		i686*)
-			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_i386.deb"
-			checksum="076702fc34be66dc8c8c301b903a4f82039c337d79e3816f3e55ac05ef6c8932"
-			;;
-		x86_64*)
-			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_amd64.deb"
-			checksum="fd3b548ff1bb1ba54f9449e1267cb67bc52a8ebf8474137cd1e07a2a87d5c81c"
-			;;
-		armv7*)
-			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_armhf.deb"
-			checksum="fde0b2f3a406ba94dc2e8d6fd7eaafc4d1e0a23be253c2d1bfac76cac23fec94"
-			;;
-		aarch64*)
-			distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_arm64.deb"
-			checksum="01085ba655fb400e807c3cd938bd54cfbb464ac972760beb5d5aed782887b874"
-			;;
+                i686*)
+                        distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_i386.deb"
+                        checksum="c2c7283eadfab5f11ab69f52ae6b7c99c682066e64411d2057ff1124377da7cb"
+                        ;;
+                x86_64*)
+                        distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_amd64.deb"
+                        checksum="980c1d5294ef3c5fbf1c38c51c8a5163fe8c109d2e06c526ea6c8033bf4d783a"
+                        ;;
+                armv7*)
+                        distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_armhf.deb"
+                        checksum="3bb4e621eed92d8dda5582d6f67c09ff6f1cf793ca59578484d58de5c4536774"
+                        ;;
+                aarch64*)
+                        distfiles="https://downloads.plex.tv/${pkgname}-new/${version}-${_suffix}/debian/plexmediaserver_${version}-${_suffix}_arm64.deb"
+                        checksum="e5b2605ace93b8e86aeae602ffabdab441eb1ec719d5217d895c590abdc877f8"
+                        ;;
 esac
 
 nopie="yes"
@@ -45,17 +45,17 @@ nopie_files="/usr/lib/plexmediaserver/Plex DLNA Server"
 make_dirs="/var/plexmediaserver 0755 _plex _plex"
 
 do_extract() {
-	fn="${distfiles##*/}"
-	ar x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${fn}"
-	tar xf data.tar.xz
-	mkdir -p etc/default usr/bin
-	cp "${FILESDIR}/default" etc/default/plexmediaserver
-	cp "${FILESDIR}/start_pms" usr/bin/start_pms
+        fn="${distfiles##*/}"
+        ar x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${fn}"
+        tar xf data.tar.xz
+        mkdir -p etc/default usr/bin
+        cp "${FILESDIR}/default" etc/default/plexmediaserver
+        cp "${FILESDIR}/start_pms" usr/bin/start_pms
 }
 
 do_install() {
-	vcopy etc /
-	vcopy usr /
-	vsv plex-media-server
-	vlicense "${FILESDIR}/LICENSE"
+        vcopy etc /
+        vcopy usr /
+        vsv plex-media-server
+        vlicense "${FILESDIR}/LICENSE"
 }
