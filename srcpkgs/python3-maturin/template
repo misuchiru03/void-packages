@@ -1,0 +1,14 @@
+# Template file for 'python3-maturin'
+pkgname=python3-maturin
+version=1.15.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools"
+makedepends="python3-setuptools-rust python3-puccinialin"
+depends="python3-tomli"
+short_desc="Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages"
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/pyo3/maturin"
+distfiles="${PYPI_SITE}/m/maturin/maturin-${version}.tar.gz"
+checksum=94b26cc8e8aba61a5f2099715fe640e18c5f678e9a500408b38761263954228a
