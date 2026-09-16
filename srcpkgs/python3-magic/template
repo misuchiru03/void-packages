@@ -2,7 +2,7 @@
 pkgname=python3-magic
 version=0.4.27
 revision=1
-build_style=python3-module
+build_style=python3-pep517
 hostmakedepends="python3-setuptools"
 makedepends="libmagic"
 depends="python3 libmagic"

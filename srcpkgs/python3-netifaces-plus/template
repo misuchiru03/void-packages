@@ -1,6 +1,6 @@
 # Template file for 'python3-netifaces-plus'
 pkgname=python3-netifaces-plus
-version=0.12.4
+version=0.12.5
 revision=1
 #archs="i686 x86_64"
 #build_wrksrc=
@@ -19,4 +19,4 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/tsukumijima/netifaces-plus"
 #changelog=""
 distfiles="${PYPI_SITE}/n/netifaces_plus/netifaces_plus-${version}.tar.gz"
-checksum=ef9634e83572b41655a3512ef3eaa936c2a9c2bbefc66bfe03db898e19d73895
+checksum=6428bd7d4323556efd4b0ec6b315221875812f8cf2b69501c6fda7a09eb79528
