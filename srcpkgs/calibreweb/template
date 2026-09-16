@@ -1,22 +1,30 @@
 # Template file for 'calibreweb'
 pkgname=calibreweb
-version=0.6.25
+version=0.6.27
 revision=1
 build_style=python3-pep517
-hostmakedepends="python3-setuptools_scm python3-wheel"
-makedepends="python3-unrar python3-odfpy python3-ebook-converter"
-depends="calibre python3-Babel python3-Flask python3-Flask-Babel python3-Flask-Login
- python3-iso8601 python3-pytz python3-requests python3-SQLAlchemy2 python3-tornado
- python3-Unidecode python3-lxml python3-Flask-WTF python3-chardet python3-APScheduler
- python3-Flask-Limiter python3-Flask-Principal python3-APScheduler python3-pycountry
- python3-ordered-set python3-limits python3-importlib_resources python3-Wand
- python3-netifaces-plus python3-magic python3-limits python3-bleach
- python3-Werkzeug python3-pypdf python3-iso-639 python3-hatchling python3-certifi
- python3-cryptography python3-Flask-HTTPAuth python3-regex python3-urllib3
- python3-unrar python3-odfpy python3-ebook-converter"
-short_desc="Web app providing a clean interface Calibre database browsing"
+hostmakedepends="
+ python3-hatchling
+ python3-setuptools_scm
+ python3-wheel
+ python3-maturin
+"
+makedepends="
+ python3-unrar
+ python3-odfpy
+ python3-ebook-converter
+"
+
+depends="calibre python3-APScheduler python3-Babel python3-Flask python3-Flask-Babel
+ python3-Flask-HTTPAuth python3-Flask-Limiter python3-Flask-Principal python3-Flask-WTF
+ python3-Unidecode python3-Wand python3-certifi python3-chardet python3-cryptography
+ python3-lxml python3-magic python3-netifaces-plus python3-nh3 python3-pycountry
+ python3-pypdf python3-regex python3-requests python3-tornado python3-urllib3
+ python3-SQLAlchemy2 python3-pytz"
+
+short_desc="Web app providing a clean interface for Calibre database browsing"
 maintainer="Alex Childs <misuchiru03+void@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/janeczku/calibre-web"
 distfiles="${PYPI_SITE}/c/calibreweb/calibreweb-${version}.tar.gz"
-checksum=27f8c3c2790ac6732a16eda52bd450a0578ad177c21f68b7373e68a3b86379cc
+checksum=6978e6143aedddf59d6709a060d1320159c17b7c986bec1878a6bd75f252f629
