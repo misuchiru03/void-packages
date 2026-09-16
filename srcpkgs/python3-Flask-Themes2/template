@@ -1,0 +1,18 @@
+# Template file for 'python3-Flask-Themes2'
+pkgname=python3-Flask-Themes2
+version=1.0.1
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools"
+makedepends=""
+depends="python3-Flask"
+short_desc="Fork of Spirits, which is in turn a fork of Flask-Themes."
+maintainer="Alex Childs <misuchiru03+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/sysr-q/flask-themes2"
+distfiles="${PYPI_SITE}/F/Flask-Themes2/Flask-Themes2-${version}.tar.gz"
+checksum=82c3204105e38437d04619bb1f4901cbc8cac5def9598f8f84747a464fcf50fb
+
+post_install() {
+	vlicense LICENSE
+}
